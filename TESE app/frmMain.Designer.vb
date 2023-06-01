@@ -1528,7 +1528,7 @@ Partial Class frmMain
         Me.Label73.AutoSize = True
         Me.Label73.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label73.ForeColor = System.Drawing.Color.Green
-        Me.Label73.Location = New System.Drawing.Point(16, 45)
+        Me.Label73.Location = New System.Drawing.Point(12, 45)
         Me.Label73.Name = "Label73"
         Me.Label73.Size = New System.Drawing.Size(45, 15)
         Me.Label73.TabIndex = 9
@@ -1539,7 +1539,7 @@ Partial Class frmMain
         Me.Label74.AutoSize = True
         Me.Label74.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label74.ForeColor = System.Drawing.Color.Green
-        Me.Label74.Location = New System.Drawing.Point(16, 60)
+        Me.Label74.Location = New System.Drawing.Point(12, 60)
         Me.Label74.Name = "Label74"
         Me.Label74.Size = New System.Drawing.Size(45, 15)
         Me.Label74.TabIndex = 9
@@ -1550,7 +1550,7 @@ Partial Class frmMain
         Me.Label75.AutoSize = True
         Me.Label75.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label75.ForeColor = System.Drawing.Color.Green
-        Me.Label75.Location = New System.Drawing.Point(16, 75)
+        Me.Label75.Location = New System.Drawing.Point(12, 75)
         Me.Label75.Name = "Label75"
         Me.Label75.Size = New System.Drawing.Size(179, 15)
         Me.Label75.TabIndex = 9
