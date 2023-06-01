@@ -127,11 +127,31 @@ Partial Class frmMain
         Me.TextBox24 = New System.Windows.Forms.TextBox()
         Me.Label64 = New System.Windows.Forms.Label()
         Me.Label65 = New System.Windows.Forms.Label()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label66 = New System.Windows.Forms.Label()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Label67 = New System.Windows.Forms.Label()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.Label68 = New System.Windows.Forms.Label()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.Label69 = New System.Windows.Forms.Label()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.Label70 = New System.Windows.Forms.Label()
+        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
+        Me.Label71 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
+        Me.GroupBox6.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -253,7 +273,7 @@ Partial Class frmMain
         '
         'Button10
         '
-        Me.Button10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button10.Image = CType(resources.GetObject("Button10.Image"), System.Drawing.Image)
         Me.Button10.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Button10.Location = New System.Drawing.Point(1064, 580)
@@ -379,7 +399,7 @@ Partial Class frmMain
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Green
-        Me.Label11.Location = New System.Drawing.Point(300, 62)
+        Me.Label11.Location = New System.Drawing.Point(541, 65)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(126, 37)
         Me.Label11.TabIndex = 15
@@ -390,7 +410,7 @@ Partial Class frmMain
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.Green
-        Me.Label12.Location = New System.Drawing.Point(421, 62)
+        Me.Label12.Location = New System.Drawing.Point(662, 65)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(36, 37)
         Me.Label12.TabIndex = 15
@@ -401,7 +421,7 @@ Partial Class frmMain
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.Green
-        Me.Label13.Location = New System.Drawing.Point(597, 62)
+        Me.Label13.Location = New System.Drawing.Point(838, 65)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(39, 37)
         Me.Label13.TabIndex = 15
@@ -1321,11 +1341,152 @@ Partial Class frmMain
         Me.Label65.TabIndex = 9
         Me.Label65.Text = "State with Key and Tension"
         '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.PictureBox6)
+        Me.GroupBox6.Controls.Add(Me.Label71)
+        Me.GroupBox6.Controls.Add(Me.PictureBox5)
+        Me.GroupBox6.Controls.Add(Me.Label70)
+        Me.GroupBox6.Controls.Add(Me.PictureBox4)
+        Me.GroupBox6.Controls.Add(Me.Label69)
+        Me.GroupBox6.Controls.Add(Me.PictureBox3)
+        Me.GroupBox6.Controls.Add(Me.Label68)
+        Me.GroupBox6.Controls.Add(Me.PictureBox2)
+        Me.GroupBox6.Controls.Add(Me.Label67)
+        Me.GroupBox6.Controls.Add(Me.PictureBox1)
+        Me.GroupBox6.Controls.Add(Me.Label66)
+        Me.GroupBox6.Location = New System.Drawing.Point(12, 542)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(287, 184)
+        Me.GroupBox6.TabIndex = 21
+        Me.GroupBox6.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.PictureBox1.Location = New System.Drawing.Point(17, 16)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(25, 20)
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
+        'Label66
+        '
+        Me.Label66.AutoSize = True
+        Me.Label66.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label66.ForeColor = System.Drawing.Color.Green
+        Me.Label66.Location = New System.Drawing.Point(58, 19)
+        Me.Label66.Name = "Label66"
+        Me.Label66.Size = New System.Drawing.Size(61, 15)
+        Me.Label66.TabIndex = 9
+        Me.Label66.Text = "Air Supply"
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.PictureBox2.Location = New System.Drawing.Point(17, 42)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(25, 20)
+        Me.PictureBox2.TabIndex = 10
+        Me.PictureBox2.TabStop = False
+        '
+        'Label67
+        '
+        Me.Label67.AutoSize = True
+        Me.Label67.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label67.ForeColor = System.Drawing.Color.Green
+        Me.Label67.Location = New System.Drawing.Point(58, 45)
+        Me.Label67.Name = "Label67"
+        Me.Label67.Size = New System.Drawing.Size(48, 15)
+        Me.Label67.TabIndex = 11
+        Me.Label67.Text = "Indexer"
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.PictureBox3.Location = New System.Drawing.Point(17, 68)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(25, 20)
+        Me.PictureBox3.TabIndex = 12
+        Me.PictureBox3.TabStop = False
+        '
+        'Label68
+        '
+        Me.Label68.AutoSize = True
+        Me.Label68.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label68.ForeColor = System.Drawing.Color.Green
+        Me.Label68.Location = New System.Drawing.Point(58, 71)
+        Me.Label68.Name = "Label68"
+        Me.Label68.Size = New System.Drawing.Size(73, 15)
+        Me.Label68.TabIndex = 13
+        Me.Label68.Text = "Motor Servo"
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.PictureBox4.Location = New System.Drawing.Point(17, 94)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(25, 20)
+        Me.PictureBox4.TabIndex = 14
+        Me.PictureBox4.TabStop = False
+        '
+        'Label69
+        '
+        Me.Label69.AutoSize = True
+        Me.Label69.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label69.ForeColor = System.Drawing.Color.Green
+        Me.Label69.Location = New System.Drawing.Point(58, 97)
+        Me.Label69.Name = "Label69"
+        Me.Label69.Size = New System.Drawing.Size(84, 15)
+        Me.Label69.TabIndex = 15
+        Me.Label69.Text = "Punch Enable"
+        '
+        'PictureBox5
+        '
+        Me.PictureBox5.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.PictureBox5.Location = New System.Drawing.Point(17, 120)
+        Me.PictureBox5.Name = "PictureBox5"
+        Me.PictureBox5.Size = New System.Drawing.Size(25, 20)
+        Me.PictureBox5.TabIndex = 16
+        Me.PictureBox5.TabStop = False
+        '
+        'Label70
+        '
+        Me.Label70.AutoSize = True
+        Me.Label70.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label70.ForeColor = System.Drawing.Color.Green
+        Me.Label70.Location = New System.Drawing.Point(58, 123)
+        Me.Label70.Name = "Label70"
+        Me.Label70.Size = New System.Drawing.Size(65, 15)
+        Me.Label70.TabIndex = 17
+        Me.Label70.Text = "Run Mode"
+        '
+        'PictureBox6
+        '
+        Me.PictureBox6.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.PictureBox6.Location = New System.Drawing.Point(17, 146)
+        Me.PictureBox6.Name = "PictureBox6"
+        Me.PictureBox6.Size = New System.Drawing.Size(25, 20)
+        Me.PictureBox6.TabIndex = 18
+        Me.PictureBox6.TabStop = False
+        '
+        'Label71
+        '
+        Me.Label71.AutoSize = True
+        Me.Label71.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label71.ForeColor = System.Drawing.Color.Green
+        Me.Label71.Location = New System.Drawing.Point(58, 149)
+        Me.Label71.Name = "Label71"
+        Me.Label71.Size = New System.Drawing.Size(63, 15)
+        Me.Label71.TabIndex = 19
+        Me.Label71.Text = "Punch Pin"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1459, 778)
+        Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
@@ -1343,6 +1504,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.Button1)
         Me.Name = "frmMain"
         Me.Text = "TESE"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -1353,6 +1515,14 @@ Partial Class frmMain
         Me.GroupBox4.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1461,4 +1631,17 @@ Partial Class frmMain
     Friend WithEvents Label59 As Label
     Friend WithEvents Label65 As Label
     Friend WithEvents Label64 As Label
+    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents PictureBox6 As PictureBox
+    Friend WithEvents Label71 As Label
+    Friend WithEvents PictureBox5 As PictureBox
+    Friend WithEvents Label70 As Label
+    Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents Label69 As Label
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents Label68 As Label
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents Label67 As Label
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label66 As Label
 End Class
