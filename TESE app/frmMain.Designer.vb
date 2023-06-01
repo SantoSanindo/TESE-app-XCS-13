@@ -140,6 +140,12 @@ Partial Class frmMain
         Me.Label70 = New System.Windows.Forms.Label()
         Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.Label71 = New System.Windows.Forms.Label()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.Label72 = New System.Windows.Forms.Label()
+        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
+        Me.Label73 = New System.Windows.Forms.Label()
+        Me.Label74 = New System.Windows.Forms.Label()
+        Me.Label75 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -152,6 +158,8 @@ Partial Class frmMain
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox7.SuspendLayout()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -1481,11 +1489,79 @@ Partial Class frmMain
         Me.Label71.TabIndex = 19
         Me.Label71.Text = "Punch Pin"
         '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.Label75)
+        Me.GroupBox7.Controls.Add(Me.Label74)
+        Me.GroupBox7.Controls.Add(Me.Label73)
+        Me.GroupBox7.Controls.Add(Me.Label72)
+        Me.GroupBox7.Controls.Add(Me.PictureBox7)
+        Me.GroupBox7.Location = New System.Drawing.Point(12, 732)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(287, 100)
+        Me.GroupBox7.TabIndex = 22
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Ethernet"
+        '
+        'Label72
+        '
+        Me.Label72.AutoSize = True
+        Me.Label72.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label72.ForeColor = System.Drawing.Color.Green
+        Me.Label72.Location = New System.Drawing.Point(57, 25)
+        Me.Label72.Name = "Label72"
+        Me.Label72.Size = New System.Drawing.Size(52, 15)
+        Me.Label72.TabIndex = 9
+        Me.Label72.Text = "Connect"
+        '
+        'PictureBox7
+        '
+        Me.PictureBox7.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.PictureBox7.Location = New System.Drawing.Point(16, 22)
+        Me.PictureBox7.Name = "PictureBox7"
+        Me.PictureBox7.Size = New System.Drawing.Size(25, 20)
+        Me.PictureBox7.TabIndex = 0
+        Me.PictureBox7.TabStop = False
+        '
+        'Label73
+        '
+        Me.Label73.AutoSize = True
+        Me.Label73.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label73.ForeColor = System.Drawing.Color.Green
+        Me.Label73.Location = New System.Drawing.Point(16, 45)
+        Me.Label73.Name = "Label73"
+        Me.Label73.Size = New System.Drawing.Size(45, 15)
+        Me.Label73.TabIndex = 9
+        Me.Label73.Text = "Label1"
+        '
+        'Label74
+        '
+        Me.Label74.AutoSize = True
+        Me.Label74.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label74.ForeColor = System.Drawing.Color.Green
+        Me.Label74.Location = New System.Drawing.Point(16, 60)
+        Me.Label74.Name = "Label74"
+        Me.Label74.Size = New System.Drawing.Size(45, 15)
+        Me.Label74.TabIndex = 9
+        Me.Label74.Text = "Label1"
+        '
+        'Label75
+        '
+        Me.Label75.AutoSize = True
+        Me.Label75.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label75.ForeColor = System.Drawing.Color.Green
+        Me.Label75.Location = New System.Drawing.Point(16, 75)
+        Me.Label75.Name = "Label75"
+        Me.Label75.Size = New System.Drawing.Size(179, 15)
+        Me.Label75.TabIndex = 9
+        Me.Label75.Text = "PLC IP Address : 126.254.108.2"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1459, 778)
+        Me.ClientSize = New System.Drawing.Size(1459, 859)
+        Me.Controls.Add(Me.GroupBox7)
         Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
@@ -1523,6 +1599,9 @@ Partial Class frmMain
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox7.PerformLayout()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1644,4 +1723,10 @@ Partial Class frmMain
     Friend WithEvents Label67 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label66 As Label
+    Friend WithEvents GroupBox7 As GroupBox
+    Friend WithEvents Label75 As Label
+    Friend WithEvents Label74 As Label
+    Friend WithEvents Label73 As Label
+    Friend WithEvents Label72 As Label
+    Friend WithEvents PictureBox7 As PictureBox
 End Class
