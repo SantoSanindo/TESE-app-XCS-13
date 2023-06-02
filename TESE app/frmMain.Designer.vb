@@ -146,6 +146,16 @@ Partial Class frmMain
         Me.Label73 = New System.Windows.Forms.Label()
         Me.Label74 = New System.Windows.Forms.Label()
         Me.Label75 = New System.Windows.Forms.Label()
+        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.Label76 = New System.Windows.Forms.Label()
+        Me.Label77 = New System.Windows.Forms.Label()
+        Me.TextBox25 = New System.Windows.Forms.TextBox()
+        Me.TextBox26 = New System.Windows.Forms.TextBox()
+        Me.TextBox27 = New System.Windows.Forms.TextBox()
+        Me.Label78 = New System.Windows.Forms.Label()
+        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
+        Me.Label79 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -160,6 +170,9 @@ Partial Class frmMain
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox7.SuspendLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox8.SuspendLayout()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -1556,11 +1569,113 @@ Partial Class frmMain
         Me.Label75.TabIndex = 9
         Me.Label75.Text = "PLC IP Address : 126.254.108.2"
         '
+        'GroupBox8
+        '
+        Me.GroupBox8.Controls.Add(Me.PictureBox9)
+        Me.GroupBox8.Controls.Add(Me.Label79)
+        Me.GroupBox8.Controls.Add(Me.PictureBox8)
+        Me.GroupBox8.Controls.Add(Me.TextBox25)
+        Me.GroupBox8.Controls.Add(Me.TextBox27)
+        Me.GroupBox8.Controls.Add(Me.TextBox26)
+        Me.GroupBox8.Controls.Add(Me.Label76)
+        Me.GroupBox8.Controls.Add(Me.Label77)
+        Me.GroupBox8.Controls.Add(Me.Label78)
+        Me.GroupBox8.Location = New System.Drawing.Point(308, 550)
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.Size = New System.Drawing.Size(748, 281)
+        Me.GroupBox8.TabIndex = 23
+        Me.GroupBox8.TabStop = False
+        Me.GroupBox8.Text = "GroupBox8"
+        '
+        'Label76
+        '
+        Me.Label76.AutoSize = True
+        Me.Label76.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label76.ForeColor = System.Drawing.Color.DimGray
+        Me.Label76.Location = New System.Drawing.Point(20, 60)
+        Me.Label76.Name = "Label76"
+        Me.Label76.Size = New System.Drawing.Size(108, 15)
+        Me.Label76.TabIndex = 9
+        Me.Label76.Text = "Activity(MW107)"
+        '
+        'Label77
+        '
+        Me.Label77.AutoSize = True
+        Me.Label77.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label77.ForeColor = System.Drawing.Color.DimGray
+        Me.Label77.Location = New System.Drawing.Point(20, 30)
+        Me.Label77.Name = "Label77"
+        Me.Label77.Size = New System.Drawing.Size(196, 15)
+        Me.Label77.TabIndex = 9
+        Me.Label77.Text = "Site#1 Loading and Punching"
+        '
+        'TextBox25
+        '
+        Me.TextBox25.Location = New System.Drawing.Point(23, 80)
+        Me.TextBox25.Multiline = True
+        Me.TextBox25.Name = "TextBox25"
+        Me.TextBox25.Size = New System.Drawing.Size(492, 78)
+        Me.TextBox25.TabIndex = 12
+        '
+        'TextBox26
+        '
+        Me.TextBox26.Location = New System.Drawing.Point(134, 60)
+        Me.TextBox26.Name = "TextBox26"
+        Me.TextBox26.Size = New System.Drawing.Size(45, 20)
+        Me.TextBox26.TabIndex = 11
+        '
+        'TextBox27
+        '
+        Me.TextBox27.Location = New System.Drawing.Point(345, 58)
+        Me.TextBox27.Name = "TextBox27"
+        Me.TextBox27.Size = New System.Drawing.Size(165, 20)
+        Me.TextBox27.TabIndex = 11
+        '
+        'Label78
+        '
+        Me.Label78.AllowDrop = True
+        Me.Label78.AutoSize = True
+        Me.Label78.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label78.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label78.Location = New System.Drawing.Point(19, 171)
+        Me.Label78.Name = "Label78"
+        Me.Label78.Size = New System.Drawing.Size(106, 20)
+        Me.Label78.TabIndex = 13
+        Me.Label78.Text = "Article Nos :"
+        '
+        'PictureBox8
+        '
+        Me.PictureBox8.Location = New System.Drawing.Point(541, 25)
+        Me.PictureBox8.Name = "PictureBox8"
+        Me.PictureBox8.Size = New System.Drawing.Size(201, 232)
+        Me.PictureBox8.TabIndex = 14
+        Me.PictureBox8.TabStop = False
+        '
+        'PictureBox9
+        '
+        Me.PictureBox9.Location = New System.Drawing.Point(570, 46)
+        Me.PictureBox9.Name = "PictureBox9"
+        Me.PictureBox9.Size = New System.Drawing.Size(147, 130)
+        Me.PictureBox9.TabIndex = 14
+        Me.PictureBox9.TabStop = False
+        '
+        'Label79
+        '
+        Me.Label79.AutoSize = True
+        Me.Label79.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label79.ForeColor = System.Drawing.Color.Black
+        Me.Label79.Location = New System.Drawing.Point(597, 204)
+        Me.Label79.Name = "Label79"
+        Me.Label79.Size = New System.Drawing.Size(100, 37)
+        Me.Label79.TabIndex = 15
+        Me.Label79.Text = "Label"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1459, 859)
+        Me.Controls.Add(Me.GroupBox8)
         Me.Controls.Add(Me.GroupBox7)
         Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.GroupBox5)
@@ -1602,6 +1717,10 @@ Partial Class frmMain
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox8.ResumeLayout(False)
+        Me.GroupBox8.PerformLayout()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1729,4 +1848,14 @@ Partial Class frmMain
     Friend WithEvents Label73 As Label
     Friend WithEvents Label72 As Label
     Friend WithEvents PictureBox7 As PictureBox
+    Friend WithEvents GroupBox8 As GroupBox
+    Friend WithEvents TextBox25 As TextBox
+    Friend WithEvents TextBox26 As TextBox
+    Friend WithEvents Label76 As Label
+    Friend WithEvents Label77 As Label
+    Friend WithEvents TextBox27 As TextBox
+    Friend WithEvents PictureBox9 As PictureBox
+    Friend WithEvents Label79 As Label
+    Friend WithEvents PictureBox8 As PictureBox
+    Friend WithEvents Label78 As Label
 End Class
