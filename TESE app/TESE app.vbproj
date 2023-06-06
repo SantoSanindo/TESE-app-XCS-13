@@ -91,6 +91,12 @@
     <Compile Include="frmDebug.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmInterrupt.Designer.vb">
+      <DependentUpon>frmInterrupt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInterrupt.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDebug.resx">
       <DependentUpon>frmDebug.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInterrupt.resx">
+      <DependentUpon>frmInterrupt.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
