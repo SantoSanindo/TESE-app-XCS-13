@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.TESE_app.testing
+            Me.MainForm = Global.TESE_app.Modbus
         End Sub
     End Class
 End Namespace
