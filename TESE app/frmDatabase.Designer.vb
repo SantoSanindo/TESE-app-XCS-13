@@ -29,40 +29,40 @@ Partial Class frmDatabase
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Txt_Partnos = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.ComboBox5 = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.ComboBox6 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox60 = New System.Windows.Forms.ComboBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.ComboBox7 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox70 = New System.Windows.Forms.ComboBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.ComboBox8 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox9 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox10 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox41 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox61 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox71 = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.ComboBox11 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox12 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox13 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox42 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox62 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox72 = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.ComboBox14 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox15 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox16 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox43 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox63 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox73 = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.ComboBox17 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox18 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox19 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox44 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox64 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox74 = New System.Windows.Forms.ComboBox()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.ComboBox20 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox21 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox22 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox45 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox65 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox75 = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ComboBox5 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox40 = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -80,7 +80,7 @@ Partial Class frmDatabase
         '
         Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(73, 77)
+        Me.ComboBox1.Location = New System.Drawing.Point(73, 148)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(246, 32)
         Me.ComboBox1.TabIndex = 1
@@ -99,7 +99,7 @@ Partial Class frmDatabase
         '
         Me.ComboBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(73, 149)
+        Me.ComboBox2.Location = New System.Drawing.Point(73, 76)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(246, 32)
         Me.ComboBox2.TabIndex = 1
@@ -118,18 +118,18 @@ Partial Class frmDatabase
         '
         Me.ComboBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(73, 221)
+        Me.ComboBox3.Location = New System.Drawing.Point(427, 148)
         Me.ComboBox3.Name = "ComboBox3"
         Me.ComboBox3.Size = New System.Drawing.Size(246, 32)
         Me.ComboBox3.TabIndex = 1
         '
-        'TextBox1
+        'Txt_Partnos
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(427, 77)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(239, 29)
-        Me.TextBox1.TabIndex = 2
+        Me.Txt_Partnos.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Txt_Partnos.Location = New System.Drawing.Point(427, 77)
+        Me.Txt_Partnos.Name = "Txt_Partnos"
+        Me.Txt_Partnos.Size = New System.Drawing.Size(239, 29)
+        Me.Txt_Partnos.TabIndex = 2
         '
         'Label4
         '
@@ -151,15 +151,6 @@ Partial Class frmDatabase
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "Electro Magnet Type"
         '
-        'ComboBox4
-        '
-        Me.ComboBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(427, 149)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(246, 32)
-        Me.ComboBox4.TabIndex = 1
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -180,14 +171,6 @@ Partial Class frmDatabase
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Contact #1"
         '
-        'ComboBox5
-        '
-        Me.ComboBox5.FormattingEnabled = True
-        Me.ComboBox5.Location = New System.Drawing.Point(162, 334)
-        Me.ComboBox5.Name = "ComboBox5"
-        Me.ComboBox5.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox5.TabIndex = 3
-        '
         'Label8
         '
         Me.Label8.AutoSize = True
@@ -198,13 +181,13 @@ Partial Class frmDatabase
         Me.Label8.TabIndex = 0
         Me.Label8.Text = "State With Key"
         '
-        'ComboBox6
+        'ComboBox60
         '
-        Me.ComboBox6.FormattingEnabled = True
-        Me.ComboBox6.Location = New System.Drawing.Point(335, 334)
-        Me.ComboBox6.Name = "ComboBox6"
-        Me.ComboBox6.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox6.TabIndex = 3
+        Me.ComboBox60.FormattingEnabled = True
+        Me.ComboBox60.Location = New System.Drawing.Point(335, 334)
+        Me.ComboBox60.Name = "ComboBox60"
+        Me.ComboBox60.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox60.TabIndex = 3
         '
         'Label9
         '
@@ -215,13 +198,13 @@ Partial Class frmDatabase
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "State With Key and Tension"
         '
-        'ComboBox7
+        'ComboBox70
         '
-        Me.ComboBox7.FormattingEnabled = True
-        Me.ComboBox7.Location = New System.Drawing.Point(508, 334)
-        Me.ComboBox7.Name = "ComboBox7"
-        Me.ComboBox7.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox7.TabIndex = 3
+        Me.ComboBox70.FormattingEnabled = True
+        Me.ComboBox70.Location = New System.Drawing.Point(508, 334)
+        Me.ComboBox70.Name = "ComboBox70"
+        Me.ComboBox70.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox70.TabIndex = 3
         '
         'Label10
         '
@@ -233,29 +216,29 @@ Partial Class frmDatabase
         Me.Label10.TabIndex = 0
         Me.Label10.Text = "Contact #2"
         '
-        'ComboBox8
+        'ComboBox41
         '
-        Me.ComboBox8.FormattingEnabled = True
-        Me.ComboBox8.Location = New System.Drawing.Point(162, 368)
-        Me.ComboBox8.Name = "ComboBox8"
-        Me.ComboBox8.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox8.TabIndex = 3
+        Me.ComboBox41.FormattingEnabled = True
+        Me.ComboBox41.Location = New System.Drawing.Point(162, 368)
+        Me.ComboBox41.Name = "ComboBox41"
+        Me.ComboBox41.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox41.TabIndex = 3
         '
-        'ComboBox9
+        'ComboBox61
         '
-        Me.ComboBox9.FormattingEnabled = True
-        Me.ComboBox9.Location = New System.Drawing.Point(335, 368)
-        Me.ComboBox9.Name = "ComboBox9"
-        Me.ComboBox9.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox9.TabIndex = 3
+        Me.ComboBox61.FormattingEnabled = True
+        Me.ComboBox61.Location = New System.Drawing.Point(335, 368)
+        Me.ComboBox61.Name = "ComboBox61"
+        Me.ComboBox61.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox61.TabIndex = 3
         '
-        'ComboBox10
+        'ComboBox71
         '
-        Me.ComboBox10.FormattingEnabled = True
-        Me.ComboBox10.Location = New System.Drawing.Point(508, 368)
-        Me.ComboBox10.Name = "ComboBox10"
-        Me.ComboBox10.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox10.TabIndex = 3
+        Me.ComboBox71.FormattingEnabled = True
+        Me.ComboBox71.Location = New System.Drawing.Point(508, 368)
+        Me.ComboBox71.Name = "ComboBox71"
+        Me.ComboBox71.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox71.TabIndex = 3
         '
         'Label11
         '
@@ -267,29 +250,29 @@ Partial Class frmDatabase
         Me.Label11.TabIndex = 0
         Me.Label11.Text = "Contact #3"
         '
-        'ComboBox11
+        'ComboBox42
         '
-        Me.ComboBox11.FormattingEnabled = True
-        Me.ComboBox11.Location = New System.Drawing.Point(162, 402)
-        Me.ComboBox11.Name = "ComboBox11"
-        Me.ComboBox11.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox11.TabIndex = 3
+        Me.ComboBox42.FormattingEnabled = True
+        Me.ComboBox42.Location = New System.Drawing.Point(162, 402)
+        Me.ComboBox42.Name = "ComboBox42"
+        Me.ComboBox42.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox42.TabIndex = 3
         '
-        'ComboBox12
+        'ComboBox62
         '
-        Me.ComboBox12.FormattingEnabled = True
-        Me.ComboBox12.Location = New System.Drawing.Point(335, 402)
-        Me.ComboBox12.Name = "ComboBox12"
-        Me.ComboBox12.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox12.TabIndex = 3
+        Me.ComboBox62.FormattingEnabled = True
+        Me.ComboBox62.Location = New System.Drawing.Point(335, 402)
+        Me.ComboBox62.Name = "ComboBox62"
+        Me.ComboBox62.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox62.TabIndex = 3
         '
-        'ComboBox13
+        'ComboBox72
         '
-        Me.ComboBox13.FormattingEnabled = True
-        Me.ComboBox13.Location = New System.Drawing.Point(508, 402)
-        Me.ComboBox13.Name = "ComboBox13"
-        Me.ComboBox13.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox13.TabIndex = 3
+        Me.ComboBox72.FormattingEnabled = True
+        Me.ComboBox72.Location = New System.Drawing.Point(508, 402)
+        Me.ComboBox72.Name = "ComboBox72"
+        Me.ComboBox72.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox72.TabIndex = 3
         '
         'Label12
         '
@@ -301,29 +284,29 @@ Partial Class frmDatabase
         Me.Label12.TabIndex = 0
         Me.Label12.Text = "Contact #4"
         '
-        'ComboBox14
+        'ComboBox43
         '
-        Me.ComboBox14.FormattingEnabled = True
-        Me.ComboBox14.Location = New System.Drawing.Point(162, 436)
-        Me.ComboBox14.Name = "ComboBox14"
-        Me.ComboBox14.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox14.TabIndex = 3
+        Me.ComboBox43.FormattingEnabled = True
+        Me.ComboBox43.Location = New System.Drawing.Point(162, 436)
+        Me.ComboBox43.Name = "ComboBox43"
+        Me.ComboBox43.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox43.TabIndex = 3
         '
-        'ComboBox15
+        'ComboBox63
         '
-        Me.ComboBox15.FormattingEnabled = True
-        Me.ComboBox15.Location = New System.Drawing.Point(335, 436)
-        Me.ComboBox15.Name = "ComboBox15"
-        Me.ComboBox15.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox15.TabIndex = 3
+        Me.ComboBox63.FormattingEnabled = True
+        Me.ComboBox63.Location = New System.Drawing.Point(335, 436)
+        Me.ComboBox63.Name = "ComboBox63"
+        Me.ComboBox63.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox63.TabIndex = 3
         '
-        'ComboBox16
+        'ComboBox73
         '
-        Me.ComboBox16.FormattingEnabled = True
-        Me.ComboBox16.Location = New System.Drawing.Point(508, 436)
-        Me.ComboBox16.Name = "ComboBox16"
-        Me.ComboBox16.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox16.TabIndex = 3
+        Me.ComboBox73.FormattingEnabled = True
+        Me.ComboBox73.Location = New System.Drawing.Point(508, 436)
+        Me.ComboBox73.Name = "ComboBox73"
+        Me.ComboBox73.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox73.TabIndex = 3
         '
         'Label13
         '
@@ -335,29 +318,29 @@ Partial Class frmDatabase
         Me.Label13.TabIndex = 0
         Me.Label13.Text = "Contact #5"
         '
-        'ComboBox17
+        'ComboBox44
         '
-        Me.ComboBox17.FormattingEnabled = True
-        Me.ComboBox17.Location = New System.Drawing.Point(162, 470)
-        Me.ComboBox17.Name = "ComboBox17"
-        Me.ComboBox17.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox17.TabIndex = 3
+        Me.ComboBox44.FormattingEnabled = True
+        Me.ComboBox44.Location = New System.Drawing.Point(162, 470)
+        Me.ComboBox44.Name = "ComboBox44"
+        Me.ComboBox44.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox44.TabIndex = 3
         '
-        'ComboBox18
+        'ComboBox64
         '
-        Me.ComboBox18.FormattingEnabled = True
-        Me.ComboBox18.Location = New System.Drawing.Point(335, 470)
-        Me.ComboBox18.Name = "ComboBox18"
-        Me.ComboBox18.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox18.TabIndex = 3
+        Me.ComboBox64.FormattingEnabled = True
+        Me.ComboBox64.Location = New System.Drawing.Point(335, 470)
+        Me.ComboBox64.Name = "ComboBox64"
+        Me.ComboBox64.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox64.TabIndex = 3
         '
-        'ComboBox19
+        'ComboBox74
         '
-        Me.ComboBox19.FormattingEnabled = True
-        Me.ComboBox19.Location = New System.Drawing.Point(508, 470)
-        Me.ComboBox19.Name = "ComboBox19"
-        Me.ComboBox19.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox19.TabIndex = 3
+        Me.ComboBox74.FormattingEnabled = True
+        Me.ComboBox74.Location = New System.Drawing.Point(508, 470)
+        Me.ComboBox74.Name = "ComboBox74"
+        Me.ComboBox74.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox74.TabIndex = 3
         '
         'Label14
         '
@@ -369,29 +352,29 @@ Partial Class frmDatabase
         Me.Label14.TabIndex = 0
         Me.Label14.Text = "Contact #6"
         '
-        'ComboBox20
+        'ComboBox45
         '
-        Me.ComboBox20.FormattingEnabled = True
-        Me.ComboBox20.Location = New System.Drawing.Point(162, 504)
-        Me.ComboBox20.Name = "ComboBox20"
-        Me.ComboBox20.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox20.TabIndex = 3
+        Me.ComboBox45.FormattingEnabled = True
+        Me.ComboBox45.Location = New System.Drawing.Point(162, 504)
+        Me.ComboBox45.Name = "ComboBox45"
+        Me.ComboBox45.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox45.TabIndex = 3
         '
-        'ComboBox21
+        'ComboBox65
         '
-        Me.ComboBox21.FormattingEnabled = True
-        Me.ComboBox21.Location = New System.Drawing.Point(335, 504)
-        Me.ComboBox21.Name = "ComboBox21"
-        Me.ComboBox21.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox21.TabIndex = 3
+        Me.ComboBox65.FormattingEnabled = True
+        Me.ComboBox65.Location = New System.Drawing.Point(335, 504)
+        Me.ComboBox65.Name = "ComboBox65"
+        Me.ComboBox65.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox65.TabIndex = 3
         '
-        'ComboBox22
+        'ComboBox75
         '
-        Me.ComboBox22.FormattingEnabled = True
-        Me.ComboBox22.Location = New System.Drawing.Point(508, 504)
-        Me.ComboBox22.Name = "ComboBox22"
-        Me.ComboBox22.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox22.TabIndex = 3
+        Me.ComboBox75.FormattingEnabled = True
+        Me.ComboBox75.Location = New System.Drawing.Point(508, 504)
+        Me.ComboBox75.Name = "ComboBox75"
+        Me.ComboBox75.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox75.TabIndex = 3
         '
         'GroupBox1
         '
@@ -402,19 +385,6 @@ Partial Class frmDatabase
         Me.GroupBox1.Size = New System.Drawing.Size(132, 476)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
-        '
-        'Button1
-        '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button1.Location = New System.Drawing.Point(21, 19)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(88, 57)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Back"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
@@ -429,33 +399,63 @@ Partial Class frmDatabase
         Me.Button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button1.Location = New System.Drawing.Point(21, 19)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(88, 57)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Back"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'ComboBox5
+        '
+        Me.ComboBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox5.FormattingEnabled = True
+        Me.ComboBox5.Location = New System.Drawing.Point(73, 220)
+        Me.ComboBox5.Name = "ComboBox5"
+        Me.ComboBox5.Size = New System.Drawing.Size(246, 32)
+        Me.ComboBox5.TabIndex = 1
+        '
+        'ComboBox40
+        '
+        Me.ComboBox40.FormattingEnabled = True
+        Me.ComboBox40.Location = New System.Drawing.Point(162, 334)
+        Me.ComboBox40.Name = "ComboBox40"
+        Me.ComboBox40.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox40.TabIndex = 3
+        '
         'frmDatabase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1081, 814)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.ComboBox22)
-        Me.Controls.Add(Me.ComboBox21)
-        Me.Controls.Add(Me.ComboBox19)
-        Me.Controls.Add(Me.ComboBox18)
-        Me.Controls.Add(Me.ComboBox16)
-        Me.Controls.Add(Me.ComboBox15)
-        Me.Controls.Add(Me.ComboBox13)
-        Me.Controls.Add(Me.ComboBox20)
-        Me.Controls.Add(Me.ComboBox12)
-        Me.Controls.Add(Me.ComboBox17)
-        Me.Controls.Add(Me.ComboBox10)
-        Me.Controls.Add(Me.ComboBox14)
-        Me.Controls.Add(Me.ComboBox9)
-        Me.Controls.Add(Me.ComboBox11)
-        Me.Controls.Add(Me.ComboBox7)
-        Me.Controls.Add(Me.ComboBox8)
-        Me.Controls.Add(Me.ComboBox6)
+        Me.Controls.Add(Me.ComboBox75)
+        Me.Controls.Add(Me.ComboBox65)
+        Me.Controls.Add(Me.ComboBox74)
+        Me.Controls.Add(Me.ComboBox64)
+        Me.Controls.Add(Me.ComboBox73)
+        Me.Controls.Add(Me.ComboBox63)
+        Me.Controls.Add(Me.ComboBox72)
+        Me.Controls.Add(Me.ComboBox45)
+        Me.Controls.Add(Me.ComboBox62)
+        Me.Controls.Add(Me.ComboBox44)
+        Me.Controls.Add(Me.ComboBox71)
+        Me.Controls.Add(Me.ComboBox43)
+        Me.Controls.Add(Me.ComboBox61)
+        Me.Controls.Add(Me.ComboBox42)
+        Me.Controls.Add(Me.ComboBox70)
+        Me.Controls.Add(Me.ComboBox40)
+        Me.Controls.Add(Me.ComboBox41)
+        Me.Controls.Add(Me.ComboBox60)
+        Me.Controls.Add(Me.Txt_Partnos)
         Me.Controls.Add(Me.ComboBox5)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.ComboBox3)
-        Me.Controls.Add(Me.ComboBox4)
         Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.ComboBox1)
@@ -486,38 +486,38 @@ Partial Class frmDatabase
     Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents ComboBox3 As ComboBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Txt_Partnos As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents ComboBox4 As ComboBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
-    Friend WithEvents ComboBox5 As ComboBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents ComboBox6 As ComboBox
+    Friend WithEvents ComboBox60 As ComboBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents ComboBox7 As ComboBox
+    Friend WithEvents ComboBox70 As ComboBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents ComboBox8 As ComboBox
-    Friend WithEvents ComboBox9 As ComboBox
-    Friend WithEvents ComboBox10 As ComboBox
+    Friend WithEvents ComboBox41 As ComboBox
+    Friend WithEvents ComboBox61 As ComboBox
+    Friend WithEvents ComboBox71 As ComboBox
     Friend WithEvents Label11 As Label
-    Friend WithEvents ComboBox11 As ComboBox
-    Friend WithEvents ComboBox12 As ComboBox
-    Friend WithEvents ComboBox13 As ComboBox
+    Friend WithEvents ComboBox42 As ComboBox
+    Friend WithEvents ComboBox62 As ComboBox
+    Friend WithEvents ComboBox72 As ComboBox
     Friend WithEvents Label12 As Label
-    Friend WithEvents ComboBox14 As ComboBox
-    Friend WithEvents ComboBox15 As ComboBox
-    Friend WithEvents ComboBox16 As ComboBox
+    Friend WithEvents ComboBox43 As ComboBox
+    Friend WithEvents ComboBox63 As ComboBox
+    Friend WithEvents ComboBox73 As ComboBox
     Friend WithEvents Label13 As Label
-    Friend WithEvents ComboBox17 As ComboBox
-    Friend WithEvents ComboBox18 As ComboBox
-    Friend WithEvents ComboBox19 As ComboBox
+    Friend WithEvents ComboBox44 As ComboBox
+    Friend WithEvents ComboBox64 As ComboBox
+    Friend WithEvents ComboBox74 As ComboBox
     Friend WithEvents Label14 As Label
-    Friend WithEvents ComboBox20 As ComboBox
-    Friend WithEvents ComboBox21 As ComboBox
-    Friend WithEvents ComboBox22 As ComboBox
+    Friend WithEvents ComboBox45 As ComboBox
+    Friend WithEvents ComboBox65 As ComboBox
+    Friend WithEvents ComboBox75 As ComboBox
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents ComboBox5 As ComboBox
+    Friend WithEvents ComboBox40 As ComboBox
 End Class

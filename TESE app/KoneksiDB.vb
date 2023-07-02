@@ -2,8 +2,8 @@
 Imports System.Data.SqlClient
 Module KoneksiDB
     Public Function bacaData(query As String) As DataSet
-
-        Dim database As String = "Data Source=192.168.1.11\SQLEXPRESS;
+        Try
+            Dim database As String = "Data Source=192.168.1.11\SQLEXPRESS;
             initial catalog=TESE;
             Persist Security Info=True;
             User ID=tese;
@@ -11,18 +11,18 @@ Module KoneksiDB
             Connect Timeout=15000;
             Max Pool Size=15000;
             Pooling=True"
-        Dim koneksi As New SqlConnection(database)
+            Dim koneksi As New SqlConnection(database)
 
+            Dim sc As New SqlCommand(query, koneksi)
+            Dim adapter As New SqlDataAdapter(sc)
+            Dim ds As New DataSet
 
-        query = "SELECT * FROM tese.dbo.[Login]"
-
-        Dim sc As New SqlCommand(query, koneksi)
-        Dim adapter As New SqlDataAdapter(sc)
-        Dim ds As New DataSet
-
-        adapter.Fill(ds)
-        koneksi.Close()
-        Return ds
+            adapter.Fill(ds)
+            koneksi.Close()
+            Return ds
+        Catch ex As Exception
+            MsgBox("Database connection Error!")
+        End Try
 
     End Function
 

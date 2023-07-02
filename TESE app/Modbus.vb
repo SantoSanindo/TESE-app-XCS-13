@@ -101,4 +101,8 @@ Public Class Modbus
 
         End If
     End Sub
+
+    Private Sub Modbus_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cboRegType.SelectedIndex = 3
+    End Sub
 End Class
