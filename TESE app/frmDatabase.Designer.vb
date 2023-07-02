@@ -59,7 +59,7 @@ Partial Class frmDatabase
         Me.ComboBox65 = New System.Windows.Forms.ComboBox()
         Me.ComboBox75 = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.cmdsave = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ComboBox5 = New System.Windows.Forms.ComboBox()
         Me.ComboBox40 = New System.Windows.Forms.ComboBox()
@@ -378,7 +378,7 @@ Partial Class frmDatabase
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Button2)
+        Me.GroupBox1.Controls.Add(Me.cmdsave)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Location = New System.Drawing.Point(701, 49)
         Me.GroupBox1.Name = "GroupBox1"
@@ -386,18 +386,18 @@ Partial Class frmDatabase
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         '
-        'Button2
+        'cmdsave
         '
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button2.Location = New System.Drawing.Point(21, 82)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(88, 57)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Save"
-        Me.Button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.cmdsave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdsave.Image = CType(resources.GetObject("cmdsave.Image"), System.Drawing.Image)
+        Me.cmdsave.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.cmdsave.Location = New System.Drawing.Point(21, 82)
+        Me.cmdsave.Name = "cmdsave"
+        Me.cmdsave.Size = New System.Drawing.Size(88, 57)
+        Me.cmdsave.TabIndex = 1
+        Me.cmdsave.Text = "Save"
+        Me.cmdsave.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.cmdsave.UseVisualStyleBackColor = True
         '
         'Button1
         '
@@ -516,7 +516,7 @@ Partial Class frmDatabase
     Friend WithEvents ComboBox65 As ComboBox
     Friend WithEvents ComboBox75 As ComboBox
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Button2 As Button
+    Friend WithEvents cmdsave As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents ComboBox5 As ComboBox
     Friend WithEvents ComboBox40 As ComboBox
