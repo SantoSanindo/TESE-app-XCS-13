@@ -65,14 +65,19 @@ Public Class frmDatabase
     End Sub
 
     Private Sub cmdsave_Click(sender As Object, e As EventArgs) Handles cmdsave.Click
+        Dim konek As New SqlConnection(database)
+
         Dim sql As String = "UPDATE TESE.dbo.XCS_13_Parameter$ SET ArticleNos = '" & Txt_Partnos.Text & "', MaterialType= '" & ComboBox1.Text & "',TensionType = '" & ComboBox3.Text & "', FunctionType= '" & ComboBox5.Text & "', Contact1Type = '" & ComboBox40.Text & "', Contact2Type= '" & ComboBox41.Text & "', Contact3Type = '" & ComboBox42.Text & "', Contact4Type= '" & ComboBox43.Text & "', Contact5Type = '" & ComboBox44.Text & "', Contact6Type= '" & ComboBox45.Text & "', Contact1_W_Key = '" & ComboBox60.Text & "',Contact2_W_Key= '" & ComboBox61.Text & "', Contact3_W_Key = '" & ComboBox62.Text & "',Contact4_W_Key= '" & ComboBox63.Text & "', Contact5_W_Key= '" & ComboBox64.Text & "',Contact6_W_Key = '" & ComboBox65.Text & "', Contact1_W_Key_Ten= '" & ComboBox70.Text & "',Contact2_W_Key_Ten = '" & ComboBox71.Text & "', Contact3_W_Key_Ten = '" & ComboBox72.Text & "',Contact4_W_Key_Ten = '" & ComboBox73.Text & "', Contact5_W_Key_Ten = '" & ComboBox74.Text & "',Contact6_W_Key_Ten = '" & ComboBox75.Text & "' Where ModelName = '" & ComboBox2.Text & "'"
 
-        Dim adapter = New SqlDataAdapter(sql, koneksi)
-        'If adapter.SelectCommand.ExecuteNonQuery().ToString() = 1 Then
-        '    MsgBox("Saving succeed!")
-        'Else
-        '    MsgBox("Saving Failed!")
-        'End If
+        konek.Open()
+        Dim sc As New SqlCommand(sql, konek)
+        Dim adapter As New SqlDataAdapter(sc)
+        If adapter.SelectCommand.ExecuteNonQuery().ToString() = 1 Then
+            MsgBox("Saving succeed!")
+            konek.Close()
+        Else
+            MsgBox("Saving Failed!")
+        End If
 
     End Sub
 End Class
