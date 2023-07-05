@@ -38,14 +38,14 @@ Partial Class frmMain
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lbl_WOnos = New System.Windows.Forms.Label()
+        Me.lbl_currentref = New System.Windows.Forms.Label()
+        Me.lbl_wocounter = New System.Windows.Forms.Label()
+        Me.lbl_tagnos = New System.Windows.Forms.Label()
+        Me.lbl_ArticleNos = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Text4 = New System.Windows.Forms.TextBox()
@@ -360,60 +360,60 @@ Partial Class frmMain
         Me.Label5.TabIndex = 13
         Me.Label5.Text = "Article Nos :"
         '
-        'Label6
+        'lbl_WOnos
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.Green
-        Me.Label6.Location = New System.Drawing.Point(218, 25)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(15, 20)
-        Me.Label6.TabIndex = 14
-        Me.Label6.Text = "-"
+        Me.lbl_WOnos.AutoSize = True
+        Me.lbl_WOnos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_WOnos.ForeColor = System.Drawing.Color.Green
+        Me.lbl_WOnos.Location = New System.Drawing.Point(218, 25)
+        Me.lbl_WOnos.Name = "lbl_WOnos"
+        Me.lbl_WOnos.Size = New System.Drawing.Size(15, 20)
+        Me.lbl_WOnos.TabIndex = 14
+        Me.lbl_WOnos.Text = "-"
         '
-        'Label7
+        'lbl_currentref
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.Green
-        Me.Label7.Location = New System.Drawing.Point(218, 45)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(15, 20)
-        Me.Label7.TabIndex = 14
-        Me.Label7.Text = "-"
+        Me.lbl_currentref.AutoSize = True
+        Me.lbl_currentref.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_currentref.ForeColor = System.Drawing.Color.Green
+        Me.lbl_currentref.Location = New System.Drawing.Point(218, 45)
+        Me.lbl_currentref.Name = "lbl_currentref"
+        Me.lbl_currentref.Size = New System.Drawing.Size(15, 20)
+        Me.lbl_currentref.TabIndex = 14
+        Me.lbl_currentref.Text = "-"
         '
-        'Label8
+        'lbl_wocounter
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.Green
-        Me.Label8.Location = New System.Drawing.Point(218, 65)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(15, 20)
-        Me.Label8.TabIndex = 14
-        Me.Label8.Text = "-"
+        Me.lbl_wocounter.AutoSize = True
+        Me.lbl_wocounter.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_wocounter.ForeColor = System.Drawing.Color.Green
+        Me.lbl_wocounter.Location = New System.Drawing.Point(218, 65)
+        Me.lbl_wocounter.Name = "lbl_wocounter"
+        Me.lbl_wocounter.Size = New System.Drawing.Size(15, 20)
+        Me.lbl_wocounter.TabIndex = 14
+        Me.lbl_wocounter.Text = "-"
         '
-        'Label9
+        'lbl_tagnos
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.Green
-        Me.Label9.Location = New System.Drawing.Point(218, 85)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(15, 20)
-        Me.Label9.TabIndex = 14
-        Me.Label9.Text = "-"
+        Me.lbl_tagnos.AutoSize = True
+        Me.lbl_tagnos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_tagnos.ForeColor = System.Drawing.Color.Green
+        Me.lbl_tagnos.Location = New System.Drawing.Point(218, 85)
+        Me.lbl_tagnos.Name = "lbl_tagnos"
+        Me.lbl_tagnos.Size = New System.Drawing.Size(15, 20)
+        Me.lbl_tagnos.TabIndex = 14
+        Me.lbl_tagnos.Text = "-"
         '
-        'Label10
+        'lbl_ArticleNos
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.Green
-        Me.Label10.Location = New System.Drawing.Point(218, 105)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(15, 20)
-        Me.Label10.TabIndex = 14
-        Me.Label10.Text = "-"
+        Me.lbl_ArticleNos.AutoSize = True
+        Me.lbl_ArticleNos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_ArticleNos.ForeColor = System.Drawing.Color.Green
+        Me.lbl_ArticleNos.Location = New System.Drawing.Point(218, 105)
+        Me.lbl_ArticleNos.Name = "lbl_ArticleNos"
+        Me.lbl_ArticleNos.Size = New System.Drawing.Size(15, 20)
+        Me.lbl_ArticleNos.TabIndex = 14
+        Me.lbl_ArticleNos.Text = "-"
         '
         'Label11
         '
@@ -426,43 +426,43 @@ Partial Class frmMain
         Me.Label11.TabIndex = 15
         Me.Label11.Text = "PASS :"
         '
-        'Label12
+        'Label8
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.ForeColor = System.Drawing.Color.Green
-        Me.Label12.Location = New System.Drawing.Point(662, 65)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(36, 37)
-        Me.Label12.TabIndex = 15
-        Me.Label12.Text = "0"
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.Green
+        Me.Label8.Location = New System.Drawing.Point(662, 65)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(36, 37)
+        Me.Label8.TabIndex = 15
+        Me.Label8.Text = "0"
         '
-        'Label13
+        'Label6
         '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.ForeColor = System.Drawing.Color.Green
-        Me.Label13.Location = New System.Drawing.Point(838, 65)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(39, 37)
-        Me.Label13.TabIndex = 15
-        Me.Label13.Text = "S"
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Green
+        Me.Label6.Location = New System.Drawing.Point(838, 65)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(39, 37)
+        Me.Label6.TabIndex = 15
+        Me.Label6.Text = "S"
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label13)
+        Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.Label12)
+        Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label10)
+        Me.GroupBox1.Controls.Add(Me.lbl_ArticleNos)
         Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.Label9)
-        Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.lbl_tagnos)
+        Me.GroupBox1.Controls.Add(Me.lbl_WOnos)
+        Me.GroupBox1.Controls.Add(Me.lbl_wocounter)
+        Me.GroupBox1.Controls.Add(Me.lbl_currentref)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(1046, 146)
@@ -1739,14 +1739,14 @@ Partial Class frmMain
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Label9 As Label
-    Friend WithEvents Label10 As Label
+    Friend WithEvents lbl_WOnos As Label
+    Friend WithEvents lbl_currentref As Label
+    Friend WithEvents lbl_wocounter As Label
+    Friend WithEvents lbl_tagnos As Label
+    Friend WithEvents lbl_ArticleNos As Label
     Friend WithEvents Label11 As Label
-    Friend WithEvents Label12 As Label
-    Friend WithEvents Label13 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label6 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Text4 As TextBox
