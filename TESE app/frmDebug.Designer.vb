@@ -91,7 +91,7 @@ Partial Class frmDebug
         Me.Label26 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.cmd_back = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -807,25 +807,25 @@ Partial Class frmDebug
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Button4)
+        Me.GroupBox1.Controls.Add(Me.cmd_back)
         Me.GroupBox1.Location = New System.Drawing.Point(670, 10)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(132, 745)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         '
-        'Button4
+        'cmd_back
         '
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
-        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button4.Location = New System.Drawing.Point(21, 19)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(88, 57)
-        Me.Button4.TabIndex = 1
-        Me.Button4.Text = "Back"
-        Me.Button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.cmd_back.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmd_back.Image = CType(resources.GetObject("cmd_back.Image"), System.Drawing.Image)
+        Me.cmd_back.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.cmd_back.Location = New System.Drawing.Point(21, 19)
+        Me.cmd_back.Name = "cmd_back"
+        Me.cmd_back.Size = New System.Drawing.Size(88, 57)
+        Me.cmd_back.TabIndex = 1
+        Me.cmd_back.Text = "Back"
+        Me.cmd_back.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.cmd_back.UseVisualStyleBackColor = True
         '
         'frmDebug
         '
@@ -976,5 +976,5 @@ Partial Class frmDebug
     Friend WithEvents Label26 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Button4 As Button
+    Friend WithEvents cmd_back As Button
 End Class
