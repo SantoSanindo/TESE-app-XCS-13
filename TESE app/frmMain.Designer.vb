@@ -156,6 +156,7 @@ Partial Class frmMain
         Me.Label76 = New System.Windows.Forms.Label()
         Me.Label77 = New System.Windows.Forms.Label()
         Me.lbl_msg = New System.Windows.Forms.Label()
+        Me.Button11 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -1670,6 +1671,18 @@ Partial Class frmMain
         Me.lbl_msg.TabIndex = 13
         Me.lbl_msg.Text = "Article Nos :"
         '
+        'Button11
+        '
+        Me.Button11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button11.Image = CType(resources.GetObject("Button11.Image"), System.Drawing.Image)
+        Me.Button11.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button11.Location = New System.Drawing.Point(1064, 662)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(88, 57)
+        Me.Button11.TabIndex = 8
+        Me.Button11.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Button11.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1683,6 +1696,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.Button9)
@@ -1857,4 +1871,5 @@ Partial Class frmMain
     Friend WithEvents Label79 As Label
     Friend WithEvents PictureBox8 As PictureBox
     Friend WithEvents lbl_msg As Label
+    Friend WithEvents Button11 As Button
 End Class

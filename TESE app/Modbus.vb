@@ -2,6 +2,18 @@
 
 Public Class Modbus
     Dim modbusClient As ModbusClient
+
+    Public Function bacaModbus(addrs As Integer) As Integer
+        txtAddress.Text = addrs
+        btnRead.PerformClick()
+        Return Convert.ToDecimal(txtNewValue.Text)
+    End Function
+
+    Public Sub tulisModbus(addrs As Integer, value As Integer)
+        txtAddress.Text = addrs
+        txtValue.Text = value
+        btnWrite.PerformClick()
+    End Sub
     Private Sub btnConnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConnect.Click
         Try
             modbusClient = New ModbusClient(txtIP.Text, Val(txtPort.Text))
@@ -9,8 +21,10 @@ Public Class Modbus
 
             btnConnect.Enabled = False
             btnDisconnect.Enabled = True
+            lbl_status.Text = "Connected"
+            lbl_status.ForeColor = Color.Green
         Catch ex As Exception
-            MsgBox("Error Connect! " & ex.Message)
+            MsgBox("Modbus Error Connect! " & ex.Message)
         End Try
 
     End Sub
@@ -22,8 +36,10 @@ Public Class Modbus
             btnConnect.Enabled = True
             btnDisconnect.Enabled = False
         Catch ex As Exception
-            MsgBox("Error Disconnect! " & ex.Message)
+            MsgBox("Modbus Error Disconnect! " & ex.Message)
         End Try
+        lbl_status.Text = "Not Connected"
+        lbl_status.ForeColor = Color.Red
     End Sub
 
     Private Sub btnRead_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRead.Click
@@ -49,7 +65,7 @@ Public Class Modbus
             End Select
 
         Catch ex As Exception
-            MsgBox("Error Read! " & ex.Message)
+            MsgBox("Modbus Error Read! " & ex.Message)
         End Try
     End Sub
 
@@ -74,7 +90,7 @@ Public Class Modbus
             End Select
 
         Catch ex As Exception
-            MsgBox("Error Write! " & ex.Message)
+            MsgBox("Modbus Error Write! " & ex.Message)
         End Try
     End Sub
 
@@ -104,5 +120,11 @@ Public Class Modbus
 
     Private Sub Modbus_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cboRegType.SelectedIndex = 3
+        btnConnect.PerformClick()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Me.Hide()
+        frmMain.Show()
     End Sub
 End Class
