@@ -4,15 +4,24 @@ Public Class Modbus
     Dim modbusClient As ModbusClient
 
     Public Function bacaModbus(addrs As Integer) As Integer
-        txtAddress.Text = addrs
-        btnRead.PerformClick()
-        Return Convert.ToDecimal(txtNewValue.Text)
+        If lbl_status.Text = "Connected" Then
+            txtAddress.Text = addrs
+            btnRead.PerformClick()
+            Return Convert.ToDecimal(txtNewValue.Text)
+        Else
+            MsgBox("modbus Not connected")
+        End If
+
     End Function
 
     Public Sub tulisModbus(addrs As Integer, value As Integer)
-        txtAddress.Text = addrs
-        txtValue.Text = value
-        btnWrite.PerformClick()
+        If lbl_status.Text = "Connected" Then
+            txtAddress.Text = addrs
+            txtValue.Text = value
+            btnWrite.PerformClick()
+        Else
+            MsgBox("modbus Not connected")
+        End If
     End Sub
     Private Sub btnConnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConnect.Click
         Try

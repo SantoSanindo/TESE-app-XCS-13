@@ -22,6 +22,7 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -29,7 +30,7 @@ Partial Class frmMain
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Command3 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
@@ -157,6 +158,10 @@ Partial Class frmMain
         Me.Label77 = New System.Windows.Forms.Label()
         Me.lbl_msg = New System.Windows.Forms.Label()
         Me.Button11 = New System.Windows.Forms.Button()
+        Me.Barcode_Comm = New System.IO.Ports.SerialPort(Me.components)
+        Me.SMAC_Comm = New System.IO.Ports.SerialPort(Me.components)
+        Me.Chroma_Comm = New System.IO.Ports.SerialPort(Me.components)
+        Me.RFID_Comm = New System.IO.Ports.SerialPort(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -254,18 +259,18 @@ Partial Class frmMain
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.Button6.UseVisualStyleBackColor = True
         '
-        'Button7
+        'Command3
         '
-        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
-        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button7.Location = New System.Drawing.Point(1064, 360)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(88, 57)
-        Me.Button7.TabIndex = 6
-        Me.Button7.Text = "Print"
-        Me.Button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.Command3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Command3.Image = CType(resources.GetObject("Command3.Image"), System.Drawing.Image)
+        Me.Command3.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Command3.Location = New System.Drawing.Point(1064, 360)
+        Me.Command3.Name = "Command3"
+        Me.Command3.Size = New System.Drawing.Size(88, 57)
+        Me.Command3.TabIndex = 6
+        Me.Command3.Text = "Print"
+        Me.Command3.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Command3.UseVisualStyleBackColor = True
         '
         'Button8
         '
@@ -1683,6 +1688,24 @@ Partial Class frmMain
         Me.Button11.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.Button11.UseVisualStyleBackColor = True
         '
+        'Barcode_Comm
+        '
+        Me.Barcode_Comm.BaudRate = 38400
+        Me.Barcode_Comm.PortName = "COM8"
+        '
+        'SMAC_Comm
+        '
+        Me.SMAC_Comm.PortName = "COM3"
+        '
+        'Chroma_Comm
+        '
+        Me.Chroma_Comm.BaudRate = 19200
+        Me.Chroma_Comm.PortName = "COM4"
+        '
+        'RFID_Comm
+        '
+        Me.RFID_Comm.BaudRate = 19200
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1700,7 +1723,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.Button9)
-        Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.Command3)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
@@ -1744,7 +1767,7 @@ Partial Class frmMain
     Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
+    Friend WithEvents Command3 As Button
     Friend WithEvents Button8 As Button
     Friend WithEvents Button9 As Button
     Friend WithEvents Button10 As Button
@@ -1872,4 +1895,8 @@ Partial Class frmMain
     Friend WithEvents PictureBox8 As PictureBox
     Friend WithEvents lbl_msg As Label
     Friend WithEvents Button11 As Button
+    Friend WithEvents Barcode_Comm As IO.Ports.SerialPort
+    Friend WithEvents SMAC_Comm As IO.Ports.SerialPort
+    Friend WithEvents Chroma_Comm As IO.Ports.SerialPort
+    Friend WithEvents RFID_Comm As IO.Ports.SerialPort
 End Class
