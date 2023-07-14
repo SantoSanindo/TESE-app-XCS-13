@@ -1595,6 +1595,7 @@ Partial Class frmMain
         '
         'shape1
         '
+        Me.shape1.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.shape1.Location = New System.Drawing.Point(570, 46)
         Me.shape1.Name = "shape1"
         Me.shape1.Size = New System.Drawing.Size(147, 130)
@@ -1731,6 +1732,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Name = "frmMain"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TESE"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

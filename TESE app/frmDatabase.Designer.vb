@@ -473,6 +473,7 @@ Partial Class frmDatabase
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmDatabase"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmDatabase"
         Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)

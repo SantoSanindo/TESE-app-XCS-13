@@ -37,4 +37,8 @@ Public Class frmMain
             Command3.Text = "Print"
         End If
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        frmDatabase.Show()
+    End Sub
 End Class
