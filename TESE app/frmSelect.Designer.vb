@@ -29,7 +29,7 @@ Partial Class frmSelect
         'TextBox37
         '
         Me.TextBox37.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox37.Location = New System.Drawing.Point(61, 65)
+        Me.TextBox37.Location = New System.Drawing.Point(66, 64)
         Me.TextBox37.Name = "TextBox37"
         Me.TextBox37.Size = New System.Drawing.Size(272, 29)
         Me.TextBox37.TabIndex = 7
@@ -37,7 +37,7 @@ Partial Class frmSelect
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(61, 119)
+        Me.Button1.Location = New System.Drawing.Point(66, 118)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(272, 49)
         Me.Button1.TabIndex = 8
@@ -52,7 +52,8 @@ Partial Class frmSelect
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox37)
         Me.Name = "frmSelect"
-        Me.Text = "frmSelect"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Reference Selection"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

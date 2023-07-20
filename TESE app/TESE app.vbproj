@@ -119,6 +119,12 @@
     <Compile Include="frmMsg.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSelect.Designer.vb">
+      <DependentUpon>frmSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelect.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="KoneksiDB.vb" />
     <Compile Include="Modbus.Designer.vb">
       <DependentUpon>Modbus.vb</DependentUpon>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMsg.resx">
       <DependentUpon>frmMsg.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelect.resx">
+      <DependentUpon>frmSelect.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modbus.resx">
       <DependentUpon>Modbus.vb</DependentUpon>

@@ -433,7 +433,8 @@ Partial Class frmDatabase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1081, 814)
+        Me.ClientSize = New System.Drawing.Size(900, 579)
+        Me.ControlBox = False
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.ComboBox75)
         Me.Controls.Add(Me.ComboBox65)
@@ -474,7 +475,7 @@ Partial Class frmDatabase
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmDatabase"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmDatabase"
+        Me.Text = "Database"
         Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()

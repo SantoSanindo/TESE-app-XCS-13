@@ -31,7 +31,7 @@ Partial Class frmAlert
         Me.Label1.ForeColor = System.Drawing.Color.IndianRed
         Me.Label1.Location = New System.Drawing.Point(62, 46)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(351, 194)
+        Me.Label1.Size = New System.Drawing.Size(356, 194)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Label1"
         '
@@ -42,7 +42,7 @@ Partial Class frmAlert
         Me.ClientSize = New System.Drawing.Size(482, 287)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmAlert"
-        Me.Text = "frmAlert"
+        Me.Text = "Alert"
         Me.ResumeLayout(False)
 
     End Sub

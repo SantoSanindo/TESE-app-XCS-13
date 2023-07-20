@@ -1,6 +1,4 @@
-﻿
-Imports System.Data.SqlClient
-
+﻿Imports System.Data.SqlClient
 
 Module KoneksiDB
     Public Function Database() As String
@@ -28,8 +26,5 @@ Module KoneksiDB
         Catch ex As Exception
             MsgBox("Database connection Error!")
         End Try
-
     End Function
-
-
 End Module

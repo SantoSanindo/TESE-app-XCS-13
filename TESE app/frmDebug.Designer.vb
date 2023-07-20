@@ -22,6 +22,7 @@ Partial Class frmDebug
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDebug))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -92,6 +93,13 @@ Partial Class frmDebug
         Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cmd_back = New System.Windows.Forms.Button()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Label32 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -99,7 +107,7 @@ Partial Class frmDebug
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(22, 24)
+        Me.Label1.Location = New System.Drawing.Point(22, 27)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(169, 24)
         Me.Label1.TabIndex = 1
@@ -121,11 +129,11 @@ Partial Class frmDebug
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(22, 59)
+        Me.Label2.Location = New System.Drawing.Point(23, 60)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(169, 24)
+        Me.Label2.Size = New System.Drawing.Size(168, 24)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Punch Cylinder RS"
+        Me.Label2.Text = "Lock Pin Presence"
         '
         'TextBox2
         '
@@ -143,11 +151,11 @@ Partial Class frmDebug
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(22, 135)
+        Me.Label3.Location = New System.Drawing.Point(26, 135)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(169, 24)
+        Me.Label3.Size = New System.Drawing.Size(165, 24)
         Me.Label3.TabIndex = 1
-        Me.Label3.Text = "Punch Cylinder RS"
+        Me.Label3.Text = "Probe Cylinder RS"
         '
         'TextBox3
         '
@@ -165,11 +173,11 @@ Partial Class frmDebug
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(22, 170)
+        Me.Label4.Location = New System.Drawing.Point(45, 173)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(169, 24)
+        Me.Label4.Size = New System.Drawing.Size(146, 24)
         Me.Label4.TabIndex = 1
-        Me.Label4.Text = "Punch Cylinder RS"
+        Me.Label4.Text = "Key Cylinder RS"
         '
         'TextBox4
         '
@@ -187,11 +195,11 @@ Partial Class frmDebug
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(22, 205)
+        Me.Label5.Location = New System.Drawing.Point(78, 208)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(169, 24)
+        Me.Label5.Size = New System.Drawing.Size(113, 24)
         Me.Label5.TabIndex = 1
-        Me.Label5.Text = "Punch Cylinder RS"
+        Me.Label5.Text = "Key Position"
         '
         'TextBox5
         '
@@ -209,11 +217,11 @@ Partial Class frmDebug
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(22, 240)
+        Me.Label6.Location = New System.Drawing.Point(112, 243)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(169, 24)
+        Me.Label6.Size = New System.Drawing.Size(79, 24)
         Me.Label6.TabIndex = 1
-        Me.Label6.Text = "Punch Cylinder RS"
+        Me.Label6.Text = "Tension"
         '
         'TextBox6
         '
@@ -231,11 +239,11 @@ Partial Class frmDebug
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(22, 275)
+        Me.Label7.Location = New System.Drawing.Point(71, 278)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(169, 24)
+        Me.Label7.Size = New System.Drawing.Size(120, 24)
         Me.Label7.TabIndex = 1
-        Me.Label7.Text = "Punch Cylinder RS"
+        Me.Label7.Text = "LED Sensors"
         '
         'TextBox7
         '
@@ -253,11 +261,11 @@ Partial Class frmDebug
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(22, 366)
+        Me.Label9.Location = New System.Drawing.Point(26, 369)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(169, 24)
+        Me.Label9.Size = New System.Drawing.Size(165, 24)
         Me.Label9.TabIndex = 1
-        Me.Label9.Text = "Punch Cylinder RS"
+        Me.Label9.Text = "Probe Cylinder RS"
         '
         'TextBox9
         '
@@ -275,11 +283,11 @@ Partial Class frmDebug
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(22, 401)
+        Me.Label10.Location = New System.Drawing.Point(45, 404)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(169, 24)
+        Me.Label10.Size = New System.Drawing.Size(146, 24)
         Me.Label10.TabIndex = 1
-        Me.Label10.Text = "Punch Cylinder RS"
+        Me.Label10.Text = "Key Cylinder RS"
         '
         'TextBox10
         '
@@ -297,11 +305,11 @@ Partial Class frmDebug
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(22, 436)
+        Me.Label11.Location = New System.Drawing.Point(78, 439)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(169, 24)
+        Me.Label11.Size = New System.Drawing.Size(113, 24)
         Me.Label11.TabIndex = 1
-        Me.Label11.Text = "Punch Cylinder RS"
+        Me.Label11.Text = "Key Position"
         '
         'TextBox11
         '
@@ -319,11 +327,11 @@ Partial Class frmDebug
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(22, 471)
+        Me.Label12.Location = New System.Drawing.Point(112, 474)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(169, 24)
+        Me.Label12.Size = New System.Drawing.Size(79, 24)
         Me.Label12.TabIndex = 1
-        Me.Label12.Text = "Punch Cylinder RS"
+        Me.Label12.Text = "Tension"
         '
         'TextBox12
         '
@@ -341,11 +349,11 @@ Partial Class frmDebug
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(22, 506)
+        Me.Label13.Location = New System.Drawing.Point(71, 509)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(169, 24)
+        Me.Label13.Size = New System.Drawing.Size(120, 24)
         Me.Label13.TabIndex = 1
-        Me.Label13.Text = "Punch Cylinder RS"
+        Me.Label13.Text = "LED Sensors"
         '
         'TextBox13
         '
@@ -363,11 +371,11 @@ Partial Class frmDebug
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(370, 26)
+        Me.Label15.Location = New System.Drawing.Point(348, 27)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(169, 24)
+        Me.Label15.Size = New System.Drawing.Size(191, 24)
         Me.Label15.TabIndex = 1
-        Me.Label15.Text = "Punch Cylinder RS"
+        Me.Label15.Text = "Punch Cylinder Valve"
         '
         'TextBox15
         '
@@ -395,11 +403,11 @@ Partial Class frmDebug
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(370, 134)
+        Me.Label16.Location = New System.Drawing.Point(352, 135)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(169, 24)
+        Me.Label16.Size = New System.Drawing.Size(187, 24)
         Me.Label16.TabIndex = 1
-        Me.Label16.Text = "Punch Cylinder RS"
+        Me.Label16.Text = "Probe Cylinder Valve"
         '
         'TextBox17
         '
@@ -427,11 +435,11 @@ Partial Class frmDebug
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(370, 167)
+        Me.Label17.Location = New System.Drawing.Point(371, 168)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(169, 24)
+        Me.Label17.Size = New System.Drawing.Size(168, 24)
         Me.Label17.TabIndex = 1
-        Me.Label17.Text = "Punch Cylinder RS"
+        Me.Label17.Text = "Key Cylinder Valve"
         '
         'TextBox19
         '
@@ -459,11 +467,11 @@ Partial Class frmDebug
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(370, 202)
+        Me.Label18.Location = New System.Drawing.Point(460, 203)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(169, 24)
+        Me.Label18.Size = New System.Drawing.Size(79, 24)
         Me.Label18.TabIndex = 1
-        Me.Label18.Text = "Punch Cylinder RS"
+        Me.Label18.Text = "Tension"
         '
         'TextBox21
         '
@@ -491,11 +499,11 @@ Partial Class frmDebug
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(370, 237)
+        Me.Label19.Location = New System.Drawing.Point(428, 238)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(169, 24)
+        Me.Label19.Size = New System.Drawing.Size(111, 24)
         Me.Label19.TabIndex = 1
-        Me.Label19.Text = "Punch Cylinder RS"
+        Me.Label19.Text = "Connectivity"
         '
         'TextBox23
         '
@@ -523,11 +531,11 @@ Partial Class frmDebug
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(370, 363)
+        Me.Label8.Location = New System.Drawing.Point(352, 364)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(169, 24)
+        Me.Label8.Size = New System.Drawing.Size(187, 24)
         Me.Label8.TabIndex = 1
-        Me.Label8.Text = "Punch Cylinder RS"
+        Me.Label8.Text = "Probe Cylinder Valve"
         '
         'TextBox8
         '
@@ -545,11 +553,11 @@ Partial Class frmDebug
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(370, 396)
+        Me.Label14.Location = New System.Drawing.Point(371, 397)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(169, 24)
+        Me.Label14.Size = New System.Drawing.Size(168, 24)
         Me.Label14.TabIndex = 1
-        Me.Label14.Text = "Punch Cylinder RS"
+        Me.Label14.Text = "Key Cylinder Valve"
         '
         'TextBox14
         '
@@ -567,11 +575,11 @@ Partial Class frmDebug
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(370, 431)
+        Me.Label20.Location = New System.Drawing.Point(460, 432)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(169, 24)
+        Me.Label20.Size = New System.Drawing.Size(79, 24)
         Me.Label20.TabIndex = 1
-        Me.Label20.Text = "Punch Cylinder RS"
+        Me.Label20.Text = "Tension"
         '
         'TextBox25
         '
@@ -589,11 +597,11 @@ Partial Class frmDebug
         '
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(370, 466)
+        Me.Label21.Location = New System.Drawing.Point(428, 467)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(169, 24)
+        Me.Label21.Size = New System.Drawing.Size(111, 24)
         Me.Label21.TabIndex = 1
-        Me.Label21.Text = "Punch Cylinder RS"
+        Me.Label21.Text = "Connectivity"
         '
         'TextBox26
         '
@@ -651,11 +659,11 @@ Partial Class frmDebug
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(370, 554)
+        Me.Label22.Location = New System.Drawing.Point(349, 555)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(169, 24)
+        Me.Label22.Size = New System.Drawing.Size(190, 24)
         Me.Label22.TabIndex = 1
-        Me.Label22.Text = "Punch Cylinder RS"
+        Me.Label22.Text = "Indexer Program Nos"
         '
         'TextBox31
         '
@@ -673,11 +681,11 @@ Partial Class frmDebug
         '
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.Location = New System.Drawing.Point(370, 587)
+        Me.Label23.Location = New System.Drawing.Point(347, 588)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(169, 24)
+        Me.Label23.Size = New System.Drawing.Size(192, 24)
         Me.Label23.TabIndex = 1
-        Me.Label23.Text = "Punch Cylinder RS"
+        Me.Label23.Text = "Indexer Program Start"
         '
         'TextBox32
         '
@@ -695,11 +703,11 @@ Partial Class frmDebug
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(370, 622)
+        Me.Label24.Location = New System.Drawing.Point(345, 623)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(169, 24)
+        Me.Label24.Size = New System.Drawing.Size(194, 24)
         Me.Label24.TabIndex = 1
-        Me.Label24.Text = "Punch Cylinder RS"
+        Me.Label24.Text = "Indexer Program Stop"
         '
         'TextBox33
         '
@@ -746,14 +754,15 @@ Partial Class frmDebug
         'TextBox37
         '
         Me.TextBox37.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox37.Location = New System.Drawing.Point(26, 688)
+        Me.TextBox37.Location = New System.Drawing.Point(26, 710)
         Me.TextBox37.Name = "TextBox37"
         Me.TextBox37.Size = New System.Drawing.Size(239, 29)
         Me.TextBox37.TabIndex = 5
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(190, 723)
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(190, 745)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 32)
         Me.Button1.TabIndex = 6
@@ -763,7 +772,7 @@ Partial Class frmDebug
         'TextBox38
         '
         Me.TextBox38.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox38.Location = New System.Drawing.Point(374, 688)
+        Me.TextBox38.Location = New System.Drawing.Point(375, 710)
         Me.TextBox38.Name = "TextBox38"
         Me.TextBox38.Size = New System.Drawing.Size(70, 29)
         Me.TextBox38.TabIndex = 5
@@ -771,7 +780,7 @@ Partial Class frmDebug
         'TextBox39
         '
         Me.TextBox39.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox39.Location = New System.Drawing.Point(496, 688)
+        Me.TextBox39.Location = New System.Drawing.Point(497, 710)
         Me.TextBox39.Name = "TextBox39"
         Me.TextBox39.Size = New System.Drawing.Size(70, 29)
         Me.TextBox39.TabIndex = 5
@@ -780,7 +789,7 @@ Partial Class frmDebug
         '
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label25.Location = New System.Drawing.Point(383, 661)
+        Me.Label25.Location = New System.Drawing.Point(384, 683)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(51, 24)
         Me.Label25.TabIndex = 1
@@ -790,7 +799,7 @@ Partial Class frmDebug
         '
         Me.Label26.AutoSize = True
         Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label26.Location = New System.Drawing.Point(506, 661)
+        Me.Label26.Location = New System.Drawing.Point(507, 683)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(47, 24)
         Me.Label26.TabIndex = 1
@@ -798,7 +807,8 @@ Partial Class frmDebug
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(374, 723)
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(375, 745)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(192, 32)
         Me.Button2.TabIndex = 6
@@ -810,7 +820,7 @@ Partial Class frmDebug
         Me.GroupBox1.Controls.Add(Me.cmd_back)
         Me.GroupBox1.Location = New System.Drawing.Point(670, 10)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(132, 745)
+        Me.GroupBox1.Size = New System.Drawing.Size(132, 639)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         '
@@ -827,11 +837,89 @@ Partial Class frmDebug
         Me.cmd_back.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cmd_back.UseVisualStyleBackColor = True
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 10
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.ForeColor = System.Drawing.Color.Red
+        Me.Label27.Location = New System.Drawing.Point(587, 682)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(49, 16)
+        Me.Label27.TabIndex = 8
+        Me.Label27.Text = "Note :"
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.ForeColor = System.Drawing.Color.Red
+        Me.Label28.Location = New System.Drawing.Point(587, 701)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(145, 16)
+        Me.Label28.TabIndex = 9
+        Me.Label28.Text = "Register 0 --> 40000"
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label29.ForeColor = System.Drawing.Color.Red
+        Me.Label29.Location = New System.Drawing.Point(587, 719)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(145, 16)
+        Me.Label29.TabIndex = 10
+        Me.Label29.Text = "Register 1 --> 40001"
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.ForeColor = System.Drawing.Color.Red
+        Me.Label30.Location = New System.Drawing.Point(587, 774)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(33, 16)
+        Me.Label30.TabIndex = 13
+        Me.Label30.Text = "etc."
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label31.ForeColor = System.Drawing.Color.Red
+        Me.Label31.Location = New System.Drawing.Point(587, 756)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(12, 16)
+        Me.Label31.TabIndex = 12
+        Me.Label31.Text = "."
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label32.ForeColor = System.Drawing.Color.Red
+        Me.Label32.Location = New System.Drawing.Point(587, 737)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(12, 16)
+        Me.Label32.TabIndex = 11
+        Me.Label32.Text = "."
+        '
         'frmDebug
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(844, 810)
+        Me.ClientSize = New System.Drawing.Size(817, 808)
+        Me.ControlBox = False
+        Me.Controls.Add(Me.Label30)
+        Me.Controls.Add(Me.Label31)
+        Me.Controls.Add(Me.Label32)
+        Me.Controls.Add(Me.Label29)
+        Me.Controls.Add(Me.Label28)
+        Me.Controls.Add(Me.Label27)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -901,7 +989,8 @@ Partial Class frmDebug
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmDebug"
-        Me.Text = "frmDebug"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Debug Mode"
         Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -977,4 +1066,11 @@ Partial Class frmDebug
     Friend WithEvents Button2 As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents cmd_back As Button
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Label27 As Label
+    Friend WithEvents Label28 As Label
+    Friend WithEvents Label29 As Label
+    Friend WithEvents Label30 As Label
+    Friend WithEvents Label31 As Label
+    Friend WithEvents Label32 As Label
 End Class

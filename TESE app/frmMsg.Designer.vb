@@ -30,10 +30,10 @@ Partial Class frmMsg
         Me.Text1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Text1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Text1.ForeColor = System.Drawing.SystemColors.Window
-        Me.Text1.Location = New System.Drawing.Point(47, 48)
+        Me.Text1.Location = New System.Drawing.Point(12, 12)
         Me.Text1.Multiline = True
         Me.Text1.Name = "Text1"
-        Me.Text1.Size = New System.Drawing.Size(456, 278)
+        Me.Text1.Size = New System.Drawing.Size(467, 287)
         Me.Text1.TabIndex = 0
         Me.Text1.Text = "Info"
         '
@@ -41,11 +41,11 @@ Partial Class frmMsg
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(550, 412)
+        Me.ClientSize = New System.Drawing.Size(491, 311)
         Me.Controls.Add(Me.Text1)
         Me.Name = "frmMsg"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmMsg"
+        Me.Text = "Message"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

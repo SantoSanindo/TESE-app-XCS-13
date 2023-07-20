@@ -6,23 +6,24 @@ Public Class Modbus
     Public Function bacaModbus(addrs As Integer) As Integer
         If lbl_status.Text = "Connected" Then
             txtAddress.Text = addrs
-            btnRead.PerformClick()
-            Return Convert.ToDecimal(txtNewValue.Text)
+            read_modbus()
+            Return CInt(txtValue.Text)
         Else
             MsgBox("modbus Not connected")
         End If
-
     End Function
 
-    Public Sub tulisModbus(addrs As Integer, value As Integer)
+    Public Function tulisModbus(addrs As Integer, value As Integer) As Boolean
         If lbl_status.Text = "Connected" Then
             txtAddress.Text = addrs
-            txtValue.Text = value
-            btnWrite.PerformClick()
+            txtNewValue.Text = value
+            write_modbus()
+            Return True
         Else
             MsgBox("modbus Not connected")
+            Return False
         End If
-    End Sub
+    End Function
     Private Sub btnConnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConnect.Click
         Try
             modbusClient = New ModbusClient(txtIP.Text, Val(txtPort.Text))
@@ -51,52 +52,60 @@ Public Class Modbus
         lbl_status.ForeColor = Color.Red
     End Sub
 
+    Private Sub read_modbus()
+        Dim StartAddress As Integer = Val(txtAddress.Text)
+
+        Select Case cboRegType.SelectedIndex
+            Case 0
+                Dim ReadValues() As Boolean = modbusClient.ReadCoils(StartAddress, 1)
+                txtValue.Text = ReadValues(0)
+            Case 1
+                If StartAddress > 10000 Then StartAddress = StartAddress - 10001
+                Dim ReadValues() As Boolean = modbusClient.ReadDiscreteInputs(StartAddress, 1)
+                txtValue.Text = ReadValues(0)
+            Case 2
+                If StartAddress > 30000 Then StartAddress = StartAddress - 30001
+                Dim ReadValues() As Integer = modbusClient.ReadInputRegisters(StartAddress, 1)
+                txtValue.Text = ReadValues(0)
+            Case 3
+                If StartAddress > 40000 Then StartAddress = StartAddress - 40001
+                Dim ReadValues() As Integer = modbusClient.ReadHoldingRegisters(StartAddress, 1)
+                txtValue.Text = ReadValues(0)
+        End Select
+    End Sub
+
     Private Sub btnRead_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRead.Click
         Try
-            Dim StartAddress As Integer = Val(txtAddress.Text)
-
-            Select Case cboRegType.SelectedIndex
-                Case 0
-                    Dim ReadValues() As Boolean = modbusClient.ReadCoils(StartAddress, 1)
-                    txtValue.Text = ReadValues(0)
-                Case 1
-                    If StartAddress > 10000 Then StartAddress = StartAddress - 10001
-                    Dim ReadValues() As Boolean = modbusClient.ReadDiscreteInputs(StartAddress, 1)
-                    txtValue.Text = ReadValues(0)
-                Case 2
-                    If StartAddress > 30000 Then StartAddress = StartAddress - 30001
-                    Dim ReadValues() As Integer = modbusClient.ReadInputRegisters(StartAddress, 1)
-                    txtValue.Text = ReadValues(0)
-                Case 3
-                    If StartAddress > 40000 Then StartAddress = StartAddress - 40001
-                    Dim ReadValues() As Integer = modbusClient.ReadHoldingRegisters(StartAddress, 1)
-                    txtValue.Text = ReadValues(0)
-            End Select
+            read_modbus()
 
         Catch ex As Exception
             MsgBox("Modbus Error Read! " & ex.Message)
         End Try
     End Sub
 
+    Private Sub write_modbus()
+        Dim StartAddress As Integer = Val(txtAddress.Text)
+
+        Select Case cboRegType.SelectedIndex
+            Case 0
+                Dim WriteVals(0) As Boolean
+                WriteVals(0) = Val(txtNewValue.Text)
+                modbusClient.WriteMultipleCoils(StartAddress, WriteVals)
+            Case 1
+                    '
+            Case 2
+                    '
+            Case 3
+                If StartAddress > 40000 Then StartAddress = StartAddress - 40001
+                Dim WriteVals(0) As Integer
+                WriteVals(0) = Val(txtNewValue.Text)
+                modbusClient.WriteMultipleRegisters(StartAddress, WriteVals)
+        End Select
+    End Sub
+
     Private Sub btnWrite_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnWrite.Click
         Try
-            Dim StartAddress As Integer = Val(txtAddress.Text)
-
-            Select Case cboRegType.SelectedIndex
-                Case 0
-                    Dim WriteVals(0) As Boolean
-                    WriteVals(0) = Val(txtNewValue.Text)
-                    modbusClient.WriteMultipleCoils(StartAddress, WriteVals)
-                Case 1
-                    '
-                Case 2
-                    '
-                Case 3
-                    If StartAddress > 40000 Then StartAddress = StartAddress - 40001
-                    Dim WriteVals(0) As Integer
-                    WriteVals(0) = Val(txtNewValue.Text)
-                    modbusClient.WriteMultipleRegisters(StartAddress, WriteVals)
-            End Select
+            write_modbus()
 
         Catch ex As Exception
             MsgBox("Modbus Error Write! " & ex.Message)
@@ -134,6 +143,5 @@ Public Class Modbus
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Me.Hide()
-        frmMain.Show()
     End Sub
 End Class

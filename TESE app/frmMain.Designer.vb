@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmMain
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmMain
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
@@ -32,7 +32,6 @@ Partial Class frmMain
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Command3 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -162,6 +161,9 @@ Partial Class frmMain
         Me.SMAC_Comm = New System.IO.Ports.SerialPort(Me.components)
         Me.Chroma_Comm = New System.IO.Ports.SerialPort(Me.components)
         Me.RFID_Comm = New System.IO.Ports.SerialPort(Me.components)
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -284,19 +286,6 @@ Partial Class frmMain
         Me.Button8.Text = "MW107 = 0"
         Me.Button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.Button8.UseVisualStyleBackColor = True
-        '
-        'Button9
-        '
-        Me.Button9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button9.Image = CType(resources.GetObject("Button9.Image"), System.Drawing.Image)
-        Me.Button9.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button9.Location = New System.Drawing.Point(1064, 442)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(88, 57)
-        Me.Button9.TabIndex = 7
-        Me.Button9.Text = "Last Piece"
-        Me.Button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button9.UseVisualStyleBackColor = True
         '
         'Button10
         '
@@ -1707,11 +1696,26 @@ Partial Class frmMain
         '
         Me.RFID_Comm.BaudRate = 19200
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.Appearance = System.Windows.Forms.Appearance.Button
+        Me.CheckBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox1.Image = CType(resources.GetObject("CheckBox1.Image"), System.Drawing.Image)
+        Me.CheckBox1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.CheckBox1.Location = New System.Drawing.Point(1064, 442)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(88, 57)
+        Me.CheckBox1.TabIndex = 24
+        Me.CheckBox1.Text = "Last Piece"
+        Me.CheckBox1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1171, 859)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.GroupBox8)
         Me.Controls.Add(Me.GroupBox7)
         Me.Controls.Add(Me.GroupBox6)
@@ -1723,7 +1727,6 @@ Partial Class frmMain
         Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button8)
-        Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Command3)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
@@ -1733,7 +1736,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.Button1)
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "TESE"
+        Me.Text = "Function Test"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -1771,7 +1774,6 @@ Partial Class frmMain
     Friend WithEvents Button6 As Button
     Friend WithEvents Command3 As Button
     Friend WithEvents Button8 As Button
-    Friend WithEvents Button9 As Button
     Friend WithEvents Button10 As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
@@ -1901,4 +1903,7 @@ Partial Class frmMain
     Friend WithEvents SMAC_Comm As IO.Ports.SerialPort
     Friend WithEvents Chroma_Comm As IO.Ports.SerialPort
     Friend WithEvents RFID_Comm As IO.Ports.SerialPort
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Timer2 As Timer
 End Class
