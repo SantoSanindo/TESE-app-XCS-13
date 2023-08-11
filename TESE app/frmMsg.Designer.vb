@@ -35,7 +35,6 @@ Partial Class frmMsg
         Me.Text1.Name = "Text1"
         Me.Text1.Size = New System.Drawing.Size(467, 287)
         Me.Text1.TabIndex = 0
-        Me.Text1.Text = "Info"
         '
         'frmMsg
         '

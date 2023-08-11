@@ -1710,6 +1710,13 @@ Partial Class frmMain
         Me.CheckBox1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
+        'Timer1
+        '
+        Me.Timer1.Interval = 200
+        '
+        'Timer2
+        '
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)

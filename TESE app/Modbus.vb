@@ -10,6 +10,7 @@ Public Class Modbus
             Return CInt(txtValue.Text)
         Else
             MsgBox("modbus Not connected")
+            Return 0
         End If
     End Function
 
@@ -24,6 +25,7 @@ Public Class Modbus
             Return False
         End If
     End Function
+
     Private Sub btnConnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConnect.Click
         Try
             modbusClient = New ModbusClient(txtIP.Text, Val(txtPort.Text))

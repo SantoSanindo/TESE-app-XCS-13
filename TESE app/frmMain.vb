@@ -6,6 +6,18 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Dir(My.Application.Info.DirectoryPath & "\Config.INI") = "" Then
+            MsgBox("Config.INI is missing")
+            End
+        End If
+
+        If Dir(My.Application.Info.DirectoryPath & "\Setup.INI") = "" Then
+            MsgBox("Setup.INI is missing")
+            End
+        End If
+
+        'ReadINI((My.Application.Info.DirectoryPath & "\Config.INI"))
+
         'Modbus
         frmMsg.Show()
         frmMsg.Text1.Text = "Establishing link wtih PLC..."
@@ -18,6 +30,7 @@ Public Class frmMain
         frmMsg.Text1.Text = "Connection to PLC established"
         frmMsg.Hide()
         Ethernet.BackColor = Color.Green
+
 
     End Sub
 
@@ -95,5 +108,38 @@ Public Class frmMain
             End If
             Button6.Text = "Door Unlock"
         End If
+    End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+        If Button10.Visible = False Then
+            Button10.Visible = True
+            Button8.Visible = True
+        Else
+            Button10.Visible = False
+            Button8.Visible = False
+        End If
+    End Sub
+    '######################################################################################################################
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        'sub program belum dibuat
+    End Sub
+    '######################################################################################################################
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        frmMsg.Show()
+        frmMsg.Text1.Text = "Homing Indexer..." & vbCrLf & "Please wait..."
+        Modbus.tulisModbus(40401, 1)
+        Do
+            If Modbus.bacaModbus(40401) = 0 Then
+                Exit Do
+            End If
+            If Modbus.bacaModbus(40190) <> 0 Then
+                Exit Do
+            End If
+            System.Windows.Forms.Application.DoEvents()
+        Loop
+        frmMsg.Close()
+        Timer2.Enabled = False
+        Timer1.Enabled = True
     End Sub
 End Class

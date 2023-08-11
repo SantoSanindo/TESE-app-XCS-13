@@ -2,7 +2,7 @@
 
 Module KoneksiDB
     Public Function Database() As String
-        Dim db As String = "Data Source=192.168.1.11\SQLEXPRESS;
+        Dim db As String = "Data Source=192.168.1.10\SQLEXPRESS;
             initial catalog=TESE;
             Persist Security Info=True;
             User ID=tese;
