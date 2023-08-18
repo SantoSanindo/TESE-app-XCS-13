@@ -1,10 +1,4 @@
 ﻿Module Declaration
-    'Public Const Connected As Short = 1
-    'Public Const Sendcomplete As Short = 2
-    'Public Const ReceiveComplete As Short = 3
-
-    Public DataSended As Boolean, DataReceived As Boolean, Abord As Boolean, lpConnected As Boolean
-    Public Xfactor As Integer
     Public Login As Boolean 'Use in frmlogin to indicate login is good or bad
     Public Parameter As ControlSpec
     Public LoadWOfrRFID As JobOrder

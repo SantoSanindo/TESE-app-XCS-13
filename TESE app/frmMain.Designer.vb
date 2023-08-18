@@ -147,7 +147,7 @@ Partial Class frmMain
         Me.Label72 = New System.Windows.Forms.Label()
         Me.Ethernet = New System.Windows.Forms.PictureBox()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
-        Me.shape1 = New System.Windows.Forms.PictureBox()
+        Me.Img_Result = New System.Windows.Forms.PictureBox()
         Me.Label79 = New System.Windows.Forms.Label()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.Text3 = New System.Windows.Forms.TextBox()
@@ -179,7 +179,7 @@ Partial Class frmMain
         Me.GroupBox7.SuspendLayout()
         CType(Me.Ethernet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox8.SuspendLayout()
-        CType(Me.shape1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Img_Result, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -729,7 +729,7 @@ Partial Class frmMain
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(142, 15)
         Me.Label24.TabIndex = 9
-        Me.Label24.Text = "Site#2 Fuctional Test"
+        Me.Label24.Text = "Site#3 Fuctional Test"
         '
         'Label25
         '
@@ -892,7 +892,7 @@ Partial Class frmMain
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(169, 15)
         Me.Label32.TabIndex = 9
-        Me.Label32.Text = "Site#2 Sycronization Test"
+        Me.Label32.Text = "Site#4 Sycronization Test"
         '
         'Label33
         '
@@ -1566,7 +1566,7 @@ Partial Class frmMain
         '
         'GroupBox8
         '
-        Me.GroupBox8.Controls.Add(Me.shape1)
+        Me.GroupBox8.Controls.Add(Me.Img_Result)
         Me.GroupBox8.Controls.Add(Me.Label79)
         Me.GroupBox8.Controls.Add(Me.PictureBox8)
         Me.GroupBox8.Controls.Add(Me.Text3)
@@ -1575,32 +1575,33 @@ Partial Class frmMain
         Me.GroupBox8.Controls.Add(Me.Label76)
         Me.GroupBox8.Controls.Add(Me.Label77)
         Me.GroupBox8.Controls.Add(Me.lbl_msg)
-        Me.GroupBox8.Location = New System.Drawing.Point(308, 550)
+        Me.GroupBox8.Location = New System.Drawing.Point(308, 542)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(748, 281)
+        Me.GroupBox8.Size = New System.Drawing.Size(748, 289)
         Me.GroupBox8.TabIndex = 23
         Me.GroupBox8.TabStop = False
-        Me.GroupBox8.Text = "GroupBox8"
         '
-        'shape1
+        'Img_Result
         '
-        Me.shape1.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.shape1.Location = New System.Drawing.Point(570, 46)
-        Me.shape1.Name = "shape1"
-        Me.shape1.Size = New System.Drawing.Size(147, 130)
-        Me.shape1.TabIndex = 14
-        Me.shape1.TabStop = False
+        Me.Img_Result.BackColor = System.Drawing.Color.Transparent
+        Me.Img_Result.BackgroundImage = Global.TESE_app.My.Resources.Resources.Fail
+        Me.Img_Result.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Img_Result.Location = New System.Drawing.Point(568, 46)
+        Me.Img_Result.Name = "Img_Result"
+        Me.Img_Result.Size = New System.Drawing.Size(150, 150)
+        Me.Img_Result.TabIndex = 14
+        Me.Img_Result.TabStop = False
         '
         'Label79
         '
-        Me.Label79.AutoSize = True
         Me.Label79.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label79.ForeColor = System.Drawing.Color.Black
-        Me.Label79.Location = New System.Drawing.Point(597, 204)
+        Me.Label79.Location = New System.Drawing.Point(549, 204)
         Me.Label79.Name = "Label79"
-        Me.Label79.Size = New System.Drawing.Size(100, 37)
+        Me.Label79.Size = New System.Drawing.Size(185, 37)
         Me.Label79.TabIndex = 15
         Me.Label79.Text = "Label"
+        Me.Label79.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'PictureBox8
         '
@@ -1659,7 +1660,7 @@ Partial Class frmMain
         Me.lbl_msg.AllowDrop = True
         Me.lbl_msg.AutoSize = True
         Me.lbl_msg.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_msg.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lbl_msg.ForeColor = System.Drawing.Color.Yellow
         Me.lbl_msg.Location = New System.Drawing.Point(19, 171)
         Me.lbl_msg.Name = "lbl_msg"
         Me.lbl_msg.Size = New System.Drawing.Size(106, 20)
@@ -1767,7 +1768,7 @@ Partial Class frmMain
         CType(Me.Ethernet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox8.ResumeLayout(False)
         Me.GroupBox8.PerformLayout()
-        CType(Me.shape1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Img_Result, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -1901,7 +1902,7 @@ Partial Class frmMain
     Friend WithEvents Label76 As Label
     Friend WithEvents Label77 As Label
     Friend WithEvents Text11 As TextBox
-    Friend WithEvents shape1 As PictureBox
+    Friend WithEvents Img_Result As PictureBox
     Friend WithEvents Label79 As Label
     Friend WithEvents PictureBox8 As PictureBox
     Friend WithEvents lbl_msg As Label

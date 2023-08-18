@@ -8,13 +8,10 @@ Module Codesoft
     End Sub
 
     Public Sub CloseCodesoft()
-        If ActiveDoc IsNot Nothing Then
-            ActiveDoc.Close(False)
-        End If
-
         If PrinterApp IsNot Nothing Then
             If PrinterApp.Documents IsNot Nothing Then
                 PrinterApp.Documents.CloseAll(False)
+                PrinterApp.Quit()
             End If
         End If
     End Sub
@@ -28,6 +25,12 @@ Module Codesoft
         End Try
     End Function
 
+    Public Sub CloseDocument()
+        If ActiveDoc IsNot Nothing Then
+            ActiveDoc.Close(False)
+        End If
+    End Sub
+
     Public Function SetPrinter(PrinterName As String, Portname As String) As Boolean
         Try
             If ActiveDoc IsNot Nothing Then
@@ -39,7 +42,7 @@ Module Codesoft
         End Try
     End Function
 
-    Public Function PrintLabel(Qty As Integer) As Boolean
+    Public Function PrintLab(Qty As Integer) As Boolean
         Try
             If ActiveDoc IsNot Nothing Then
                 ActiveDoc.FullClippingMode = True

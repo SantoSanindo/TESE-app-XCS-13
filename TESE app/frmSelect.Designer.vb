@@ -22,8 +22,10 @@ Partial Class frmSelect
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.TextBox37 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.SuspendLayout()
         '
         'TextBox37
@@ -44,6 +46,10 @@ Partial Class frmSelect
         Me.Button1.Text = "Print"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'SerialPort1
+        '
+        Me.SerialPort1.PortName = "COM8"
+        '
         'frmSelect
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -61,4 +67,5 @@ Partial Class frmSelect
 
     Friend WithEvents TextBox37 As TextBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents SerialPort1 As IO.Ports.SerialPort
 End Class

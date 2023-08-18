@@ -96,6 +96,6 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
+        frmMain.Chroma_Comm.Write(TextBox37.Text & vbCrLf)
     End Sub
 End Class
