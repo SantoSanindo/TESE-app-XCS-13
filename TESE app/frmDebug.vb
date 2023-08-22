@@ -1,6 +1,7 @@
 ﻿Public Class frmDebug
     Private Sub cmd_back_Click(sender As Object, e As EventArgs) Handles cmd_back.Click
         frmMain.Show()
+        Timer1.Enabled = False
         Me.Close()
     End Sub
 
@@ -97,5 +98,9 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         frmMain.Chroma_Comm.Write(TextBox37.Text & vbCrLf)
+    End Sub
+
+    Private Sub frmDebug_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Timer1.Enabled = True
     End Sub
 End Class

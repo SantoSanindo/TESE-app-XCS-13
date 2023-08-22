@@ -1,11 +1,13 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Threading
+Imports System.Net
 
 Public Class frmMain
     Dim AssyBuf As String
     Dim Smacbuf As String
     Dim ChromaBuf As String
     Dim ChromaFBbuf As String
+    Dim FlashColor As Integer
     Dim TempPSN As String
     Public S1_cavitynos As Integer
     Dim SychResult As String
@@ -50,6 +52,15 @@ Public Class frmMain
         frmMsg.Text1.Text = "Connection to PLC established"
         'frmMsg.Hide()
         Ethernet.BackColor = Color.Green
+
+
+        Dim strHostName As String = Dns.GetHostName()
+        Dim hostname As IPHostEntry = Dns.GetHostByName(strHostName)
+        Dim ip As IPAddress() = hostname.AddressList
+        lbl_localhostname.Text = "PC Name : " & strHostName
+        lbl_localip.Text = "PC IP Address : " & ip(0).ToString
+        Label79.Text = ""
+
 
         Chroma_Comm.Open()
         frmMsg.Text1.Text = "Initalizing Chroma 19053..."
@@ -221,7 +232,7 @@ Public Class frmMain
                 Exit Function
             End If
 
-            Dim query = "SELECT * FROM TESE.dbo.XCS_13_Parameter$ WHERE ModelName = '" & UnitRef & "'"
+            Dim query = "SELECT * FROM TESE.dbo.Parameter WHERE ModelName = '" & UnitRef & "'"
             Dim dt = KoneksiDB.bacaData(query).Tables(0)
 
             Parameter.UnitTension = dt.Rows(0).Item("TensionType")
@@ -317,7 +328,7 @@ Public Class frmMain
                 Parameter.UnitContact6_W_Key_Ten = "0"
             End If
 
-            Dim query2 = "SELECT * FROM TESE.dbo.XCS_13_Label$ WHERE ModelName = '" & UnitRef & "'"
+            Dim query2 = "SELECT * FROM TESE.dbo.Label WHERE ModelName = '" & UnitRef & "'"
             Dim dt2 = KoneksiDB.bacaData(query2).Tables(0)
 
             Parameter.UnitLabelTemplate = dt.Rows(0).Item("Schematic_Template")
@@ -1035,6 +1046,9 @@ FailComm:
         Dim Tagnos As String
         Dim TagQty As String
         Dim Tagid As String
+        Dim Operation_mode As Integer
+        Dim CurrentState As String
+        Dim S4_cavity As Integer
 
         If Button4.Text = "Start" Then
             Tagnos = RD_MULTI_RFID("0000", 10)
@@ -1239,9 +1253,6 @@ yap:
         Ethernet.BackColor = Color.Green
         'Clearscreen
 
-        Dim Operation_mode As Integer
-        Dim CurrentState As String
-        Dim S4_cavity As Integer
         If Button4.Text = "Stop" Then
             If lbl_msg.ForeColor = Color.Yellow Then
                 lbl_msg.ForeColor = Color.Black
@@ -1497,11 +1508,991 @@ yap:
 
             GoTo skip
 100:
+            Text3.Text = "Updating PSN file..." & vbCrLf
+            Text3.Text = Text3.Text & TempPSN & vbCrLf
+            If TestResult = 150 Then
+                PSNFileInfo.FTStatus = "PASS"
+                Img_Result.Visible = True
+                Img_Result.BackgroundImage = TESE_app.My.Resources.Pass
+            Else
+                PSNFileInfo.FTStatus = "FAIL"
+                Img_Result.Visible = True
+                Img_Result.BackgroundImage = TESE_app.My.Resources.Fail
+                'Text3.Text = "--> " & FailureMode(TestResult) & vbCrLf
+                Label79.Text = TestResult & vbCrLf & FailureMode(TestResult)
+            End If
+            PSNFileInfo.PSN = TempPSN
+            PSNFileInfo.FTCheckOut = Today & "," & TimeOfDay
+            If Not WRITEPSNFILE(TempPSN) Then
+                Text3.Text = "--> Unable to write PSN file in PSN folder in server" & vbCrLf
+                Exit Sub
+            End If
+            Text3.Text = Text3.Text & "Updating PSN - " & PSNFileInfo.PSN & ".Txt completed" & vbCrLf
+
+            'Exit Sub
+
+            '-----To update the PSN File ------
+200:
 
 
+            '----------------------------------------------------------------------------------
+skip:
+            If Val(Label8.Text) = Val(lbl_wocounter.Text) Then
+                If Modbus.bacaModbus(40096) = 0 Then
+                    If Not Modbus.tulisModbus(40096, 1) Then
+                        Text3.Text = "Unable to communicate with PLC - %MW96"
+                    End If
+                End If
+                If FlashColor = 1 Then
+                    Label8.ForeColor = Color.Red
+                    FlashColor = 0
+                Else
+                    Label8.ForeColor = Color.Green
+                    FlashColor = 1
+                End If
+            End If
 
 
+            '============================= Hipot site activity ================================
 
+            CurrentState = Dec2Bin(Modbus.bacaModbus(40302))
+            Text90.Text = Mid(CurrentState, 16, 1)
+            Text91.Text = Mid(CurrentState, 15, 1)
+            Text92.Text = Mid(CurrentState, 14, 1)
+            Text93.Text = Mid(CurrentState, 13, 1)
+            Text94.Text = Mid(CurrentState, 12, 1)
+            Text95.Text = Mid(CurrentState, 11, 1)
+
+            Select Case S2_activity
+                Case 22
+                    Text4.Text = "Hipot SelfTest S1-1" & vbCrLf
+                    If Not Set_Chroma_SelfTest() Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest S1-1 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 23) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 25
+                    Text4.Text = "Hipot SelfTest S1-2" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest S1-2 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 26) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 28
+                    Text4.Text = "Hipot SelfTest S2-1" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(2))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(2))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    Thread.Sleep(70)
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest S2-1 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 29) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 31
+                    Text4.Text = "Hipot SelfTest S2-2" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest S2-2 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 32) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 34
+                    Text4.Text = "Hipot SelfTest S3-1" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(3))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(3))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    Thread.Sleep(70)
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest S3-1 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 35) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 37
+                    Text4.Text = "Hipot SelfTest S3-2" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest S3-2 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 38) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 40
+                    Text4.Text = "Hipot SelfTest S4-1" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(4))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(4))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    Thread.Sleep(70)
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest S4-1 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 41) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 43
+                    Text4.Text = "Hipot SelfTest S4-2" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest S4-2 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 44) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 46
+                    Text4.Text = "Hipot SelfTest S5-1" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(5))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(5))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    Thread.Sleep(70)
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest S5-1 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 47) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 49
+                    Text4.Text = "Hipot SelfTest S5-2" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest S5-2 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 50) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 52
+                    Text4.Text = "Hipot SelfTest S6-1" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(6))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(6))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    Thread.Sleep(70)
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest S6-1 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 53) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 55
+                    Text4.Text = "Hipot SelfTest S6-2" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest S6-2 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 56) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 58
+                    Text4.Text = "Hipot SelfTest Body" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(7))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(7))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    Thread.Sleep(70)
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest Body1 fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 59) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 61
+                    Text4.Text = Text4.Text & "Hipot SelfTest Body" & vbCrLf
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    If Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot SelfTest Body fail" & vbCrLf
+                        If Not Modbus.tulisModbus(40127, 900) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 62) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 103 'Test01
+                    Text4.Text = "Setting Chroma 19053 for Hipot Test..." & vbCrLf
+                    If Not Set_Chroma_HipotTest() Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Exit Sub
+                    End If
+                    Text4.Text = Text4.Text & "HiPot Test01" & vbCrLf
+                    Text13.Text = "7"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(7))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(7))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Text14.Text = "1,2,3,4,5,6,8"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW(@(1,2,3,4,5,6,8))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW?", "(@(1,2,3,4,5,6,8))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Thread.Sleep(50)
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot Test01 fail" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 980) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Modbus.tulisModbus(40127, 104) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 106 'Test02
+                    Text4.Text = "HiPot Test02" & vbCrLf
+                    Text13.Text = "1"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(1))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(1))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Text14.Text = "2,3,4,5,6,8"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW(@(2,3,4,5,6,8))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW?", "(@(2,3,4,5,6,8))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Thread.Sleep(50)
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot Test02 fail" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 980) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Modbus.tulisModbus(40127, 107) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 109 'Test03
+                    Text4.Text = "HiPot Test03" & vbCrLf
+                    Text13.Text = "2"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(2))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(2))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Text14.Text = "3,4,5,6,8"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW(@(3,4,5,6,8))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW?", "(@(3,4,5,6,8))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Thread.Sleep(50)
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot Test03 fail" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 980) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Modbus.tulisModbus(40127, 110) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 112 'Test04
+                    Text4.Text = "HiPot Test04" & vbCrLf
+                    Text13.Text = "3"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(3))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(3))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Text14.Text = "4,5,6,8"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW(@(4,5,6,8))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW?", "(@(4,5,6,8))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Thread.Sleep(50)
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot Test04 fail" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 980) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Modbus.tulisModbus(40127, 113) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 115 'Test05
+                    Text4.Text = "HiPot Test05" & vbCrLf
+                    Text13.Text = "8"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(8))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(8))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Text14.Text = "4,5,6"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW(@(4,5,6))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW?", "(@(4,5,6))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Thread.Sleep(50)
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot Test05 fail" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 980) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Modbus.tulisModbus(40127, 116) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 118 'Test06
+                    Text4.Text = "HiPot Test06" & vbCrLf
+                    Text13.Text = "4"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(4))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(4))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Text14.Text = "5,6,8"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW(@(5,6,8))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW?", "(@(5,6,8))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Thread.Sleep(50)
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot Test06 fail" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 980) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Modbus.tulisModbus(40127, 119) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 121 'Test07
+                    Text4.Text = "HiPot Test07" & vbCrLf
+                    Text13.Text = "5"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(5))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(5))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Text14.Text = "6,8"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW(@(6,8))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW?", "(@(6,8))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Thread.Sleep(50)
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot Test07 fail" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 980) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Modbus.tulisModbus(40127, 122) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    End If
+
+                Case 124 'Test08
+                    Text4.Text = "HiPot Test08" & vbCrLf
+                    Text13.Text = "6"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN(@(6))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN?", "(@(6))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Text14.Text = "8"
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW(@(8))", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Set_chroma("SOUR:SAFE:STEP 1:AC:CHAN:LOW?", "(@(8))") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    Thread.Sleep(50)
+                    If Not Set_chroma("SOUR:SAFE:STAR", "") Then
+                        Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        Exit Sub
+                    End If
+                    If Not Poll_Chroma_Result() Then
+                        Text4.Text = Text4.Text & "--> Hipot Test08 fail" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Set_chroma("SOUR:SAFE:STOP", "") Then
+                            Text4.Text = Text4.Text & "--> Unable to communicate with Chroma 19053" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                        If Not Modbus.tulisModbus(40127, 980) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    Else
+                        Text4.Text = Text4.Text & "Pass" & vbCrLf
+                        Text4.SelectionLength = Len(Text4.Text)
+                        If Not Modbus.tulisModbus(40127, 125) Then
+                            Text4.Text = Text4.Text & "--> Unable to write to PLC" & vbCrLf
+                            Text4.SelectionLength = Len(Text4.Text)
+                            Exit Sub
+                        End If
+                    End If
+            End Select
+
+            '=============================== Site#3 Functional ==============================
+            CurrentState = Dec2Bin(Modbus.bacaModbus(40303))
+            Text80.Text = Mid(CurrentState, 16, 1)
+            Text81.Text = Mid(CurrentState, 15, 1)
+            Text82.Text = Mid(CurrentState, 14, 1)
+            Text83.Text = Mid(CurrentState, 13, 1)
+            Text84.Text = Mid(CurrentState, 12, 1)
+            Text85.Text = Mid(CurrentState, 11, 1)
+            Select Case S3_activity
+                Case 5
+                    Text6.Text = "Checking Contacts status - Original State" & vbCrLf
+                Case 8
+                    Text6.Text = "Checking Contacts status - With Key" & vbCrLf
+                Case 14
+                    Text6.Text = "Checking Contacts status - With Key & Tension" & vbCrLf
+                Case 23 'LED
+                    Text6.Text = "Checking LED status" & vbCrLf
+                Case 30
+                    Text6.Text = "Checking Contacts status - Original State" & vbCrLf
+            End Select
+            '==================================================================================
+
+            '============================ Site#4 - Sychronization =============================
+            Select Case S4_activity
+                Case 26
+                    If (Val(SychResult) + 0.8) > 1 And Val(SychResult) < 5 Then
+                        Text5.Text = Text5.Text & "PASS" & vbCrLf
+                        Text5.SelectionLength = Len(Text5.Text)
+                        Modbus.tulisModbus(40175, 1)
+                    Else
+                        Text5.Text = Text5.Text & "FAIL" & vbCrLf
+                        Text5.SelectionLength = Len(Text5.Text)
+                        Modbus.tulisModbus(40175, 0)
+                    End If
+
+                    S4_cavity = Modbus.bacaModbus(40160)
+                    If S4_cavity = 1 Then
+                        If Not LOADPSNFILE4S4("C1") Then
+                            Text5.Text = "Unable to Retrieve C1 temp file..."
+                        End If
+                        S4PSNFileinfo.FTSynMeas = CStr(System.Math.Abs(CDbl(SychResult)))
+                        If Not WRITEPSNFILE4S4("C1") Then
+                            Text5.Text = "Unable to Write C1 temp file..."
+                        End If
+                    ElseIf S4_cavity = 2 Then
+                        If Not LOADPSNFILE4S4("C2") Then
+                            Text5.Text = "Unable to Retrieve C2 temp file..."
+                        End If
+                        S4PSNFileinfo.FTSynMeas = CStr(System.Math.Abs(CDbl(SychResult)))
+                        If Not WRITEPSNFILE4S4("C2") Then
+                            Text5.Text = "Unable to Write C2 temp file..."
+                        End If
+                    ElseIf S4_cavity = 3 Then
+                        If Not LOADPSNFILE4S4("C3") Then
+                            Text5.Text = "Unable to Retrieve C3 temp file..."
+                        End If
+                        S4PSNFileinfo.FTSynMeas = CStr(System.Math.Abs(CDbl(SychResult)))
+                        If Not WRITEPSNFILE4S4("C3") Then
+                            Text5.Text = "Unable to Write C3 temp file..."
+                        End If
+                    ElseIf S4_cavity = 4 Then
+                        If Not LOADPSNFILE4S4("C4") Then
+                            Text5.Text = "Unable to Retrieve C4 temp file..."
+                        End If
+                        S4PSNFileinfo.FTSynMeas = CStr(System.Math.Abs(CDbl(SychResult)))
+                        If Not WRITEPSNFILE4S4("C4") Then
+                            Text5.Text = "Unable to Write C4 temp file..."
+                        End If
+                    End If
+                    SychResult = ""
+                    Modbus.tulisModbus(40167, 27)
+                Case 90
+                    SMAC_Comm.Write(Chr(27))
+                    Thread.Sleep(10)
+                    SMAC_Comm.Write("ms0" & Chr(13))
+                    Thread.Sleep(10)
+                    Modbus.tulisModbus(40167, 91)
+            End Select
         End If
     End Sub
 End Class

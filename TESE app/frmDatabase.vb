@@ -18,7 +18,7 @@ Public Class frmDatabase
         ComboBox3.Items.Add("120VAC")
         ComboBox3.Items.Add("230VAC")
 
-        Dim query = "SELECT ModelName FROM TESE.dbo.XCS_13_Parameter$"
+        Dim query = "SELECT ModelName FROM TESE.dbo.Parameter"
         Dim dt = KoneksiDB.bacaData(query).Tables(0)
 
         For i As Integer = 0 To dt.Rows.Count - 1
@@ -37,7 +37,7 @@ Public Class frmDatabase
 
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
         If ComboBox2.Text = "" Then Exit Sub
-        Dim query = "SELECT * FROM TESE.dbo.XCS_13_Parameter$ WHERE ModelName = '" & ComboBox2.Text & "'"
+        Dim query = "SELECT * FROM TESE.dbo.Parameter WHERE ModelName = '" & ComboBox2.Text & "'"
         Dim dt = KoneksiDB.bacaData(query).Tables(0)
 
         Txt_Partnos.Text = dt.Rows(0).Item("ArticleNos")
@@ -68,7 +68,7 @@ Public Class frmDatabase
         If ComboBox2.Text <> "" Then
             Dim konek As New SqlConnection(Database)
 
-            Dim sql As String = "UPDATE TESE.dbo.XCS_13_Parameter$ SET ArticleNos = '" & Txt_Partnos.Text & "', MaterialType= '" & ComboBox1.Text & "',TensionType = '" & ComboBox3.Text & "', FunctionType= '" & ComboBox5.Text & "', Contact1Type = '" & ComboBox40.Text & "', Contact2Type= '" & ComboBox41.Text & "', Contact3Type = '" & ComboBox42.Text & "', Contact4Type= '" & ComboBox43.Text & "', Contact5Type = '" & ComboBox44.Text & "', Contact6Type= '" & ComboBox45.Text & "', Contact1_W_Key = '" & ComboBox60.Text & "',Contact2_W_Key= '" & ComboBox61.Text & "', Contact3_W_Key = '" & ComboBox62.Text & "',Contact4_W_Key= '" & ComboBox63.Text & "', Contact5_W_Key= '" & ComboBox64.Text & "',Contact6_W_Key = '" & ComboBox65.Text & "', Contact1_W_Key_Ten= '" & ComboBox70.Text & "',Contact2_W_Key_Ten = '" & ComboBox71.Text & "', Contact3_W_Key_Ten = '" & ComboBox72.Text & "',Contact4_W_Key_Ten = '" & ComboBox73.Text & "', Contact5_W_Key_Ten = '" & ComboBox74.Text & "',Contact6_W_Key_Ten = '" & ComboBox75.Text & "' Where ModelName = '" & ComboBox2.Text & "'"
+            Dim sql As String = "UPDATE TESE.dbo.Parameter SET ArticleNos = '" & Txt_Partnos.Text & "', MaterialType= '" & ComboBox1.Text & "',TensionType = '" & ComboBox3.Text & "', FunctionType= '" & ComboBox5.Text & "', Contact1Type = '" & ComboBox40.Text & "', Contact2Type= '" & ComboBox41.Text & "', Contact3Type = '" & ComboBox42.Text & "', Contact4Type= '" & ComboBox43.Text & "', Contact5Type = '" & ComboBox44.Text & "', Contact6Type= '" & ComboBox45.Text & "', Contact1_W_Key = '" & ComboBox60.Text & "',Contact2_W_Key= '" & ComboBox61.Text & "', Contact3_W_Key = '" & ComboBox62.Text & "',Contact4_W_Key= '" & ComboBox63.Text & "', Contact5_W_Key= '" & ComboBox64.Text & "',Contact6_W_Key = '" & ComboBox65.Text & "', Contact1_W_Key_Ten= '" & ComboBox70.Text & "',Contact2_W_Key_Ten = '" & ComboBox71.Text & "', Contact3_W_Key_Ten = '" & ComboBox72.Text & "',Contact4_W_Key_Ten = '" & ComboBox73.Text & "', Contact5_W_Key_Ten = '" & ComboBox74.Text & "',Contact6_W_Key_Ten = '" & ComboBox75.Text & "' Where ModelName = '" & ComboBox2.Text & "'"
 
             konek.Open()
             Dim sc As New SqlCommand(sql, konek)
@@ -82,7 +82,5 @@ Public Class frmDatabase
         Else
             MsgBox("You have to select Material Name !")
         End If
-
-
     End Sub
 End Class

@@ -1591,6 +1591,7 @@ Partial Class frmMain
         Me.Img_Result.Size = New System.Drawing.Size(150, 150)
         Me.Img_Result.TabIndex = 14
         Me.Img_Result.TabStop = False
+        Me.Img_Result.Visible = False
         '
         'Label79
         '
@@ -1742,9 +1743,10 @@ Partial Class frmMain
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Function Test"
+        Me.Text = "Functional Test"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)

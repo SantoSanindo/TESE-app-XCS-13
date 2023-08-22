@@ -2,7 +2,7 @@
 Imports System.Data.SqlClient
 Module modGeneral
     Public Function CheckWOExist(WO As String) As Boolean
-        Dim query = "SELECT * FROM TESE.dbo.XCS_13_Tester$ WHERE WONOS = '" & WO & "'"
+        Dim query = "SELECT * FROM TESE.dbo.Tester WHERE WONOS = '" & WO & "'"
         Dim dt = KoneksiDB.bacaData(query).Tables(0)
 
         If dt.Rows(0).Item("WONOS") = "" Then
@@ -15,7 +15,7 @@ Module modGeneral
     Public Function AddWO(WO As String) As Boolean
         Dim konek As New SqlConnection(Database)
 
-        Dim sql As String = "INSERT INTO TESE.dbo.XCS_13_Tester$ (WONOS,OUTPUT) VALUES('" & WO & "',0)"
+        Dim sql As String = "INSERT INTO TESE.dbo.Tester (WONOS,OUTPUT) VALUES('" & WO & "',0)"
 
         konek.Open()
         Dim sc As New SqlCommand(sql, konek)
@@ -31,7 +31,7 @@ Module modGeneral
     Public Function UpdateWO(WO As String, updateqty As String) As Boolean
         Dim konek As New SqlConnection(Database)
 
-        Dim sql As String = "UPDATE TESE.dbo.XCS_13_Tester$ SET OUTPUT='" & updateqty & "' WHERE WONOS='" & WO & "'"
+        Dim sql As String = "UPDATE TESE.dbo.Tester SET OUTPUT='" & updateqty & "' WHERE WONOS='" & WO & "'"
 
         konek.Open()
         Dim sc As New SqlCommand(sql, konek)
@@ -46,7 +46,7 @@ Module modGeneral
 
     Public Function RetrieveWOQty(WO As String) As String
         Dim readqty As String
-        Dim query = "SELECT * FROM TESE.dbo.XCS_13_Tester$ WHERE WONOS = '" & WO & "'"
+        Dim query = "SELECT * FROM TESE.dbo.Tester WHERE WONOS = '" & WO & "'"
         Dim dt = KoneksiDB.bacaData(query).Tables(0)
 
         readqty = dt.Rows(0).Item("OUTPUT")

@@ -157,12 +157,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RFID.vb" />
-    <Compile Include="testing.Designer.vb">
-      <DependentUpon>testing.vb</DependentUpon>
-    </Compile>
-    <Compile Include="testing.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmAlert.resx">
@@ -197,9 +191,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="testing.resx">
-      <DependentUpon>testing.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
