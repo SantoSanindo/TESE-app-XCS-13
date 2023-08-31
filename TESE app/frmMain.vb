@@ -41,7 +41,7 @@ Public Class frmMain
             End
         End If
 
-        ReadINI((My.Application.Info.DirectoryPath & "\Config.INI"))
+        ReadINI(projectFolder & "\Config\Config.INI")
 
         'Modbus
         frmMsg.Show()

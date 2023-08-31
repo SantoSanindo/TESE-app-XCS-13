@@ -14,11 +14,8 @@ Module modReadWrite
 		Dim SectionHeading As String = ""
 		Dim pos As Integer
 
-		Dim fullPath As String = System.AppDomain.CurrentDomain.BaseDirectory
-		Dim projectFolder As String = fullPath.Replace("\TESE app\bin\Debug\", "").Replace("\TESE app\bin\Release\", "")
-
 		FNum = FreeFile()
-		FileOpen(FNum, projectFolder & "\Config\Config.INI", OpenMode.Input)
+		FileOpen(FNum, Filename, OpenMode.Input)
 
 		Do While Not EOF(FNum)
 
