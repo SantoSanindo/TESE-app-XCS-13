@@ -55,4 +55,10 @@ Module Codesoft
             Return False
         End Try
     End Function
+
+    Public Sub killLPPA()
+        For Each p As Process In System.Diagnostics.Process.GetProcessesByName("Lppa")
+            p.Kill()
+        Next
+    End Sub
 End Module

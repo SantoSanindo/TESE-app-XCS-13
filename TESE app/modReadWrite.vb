@@ -14,13 +14,11 @@ Module modReadWrite
 		Dim SectionHeading As String = ""
 		Dim pos As Integer
 
-		FNum = FreeFile()
-		'If Dir(App.Path & "\Config.ini") = "" Then
-		'    SetDefaultINIValues
-		'    WriteINI
-		'End If
+		Dim fullPath As String = System.AppDomain.CurrentDomain.BaseDirectory
+		Dim projectFolder As String = fullPath.Replace("\TESE app\bin\Debug\", "").Replace("\TESE app\bin\Release\", "")
 
-		FileOpen(FNum, My.Application.Info.DirectoryPath & "\Config.ini", OpenMode.Input)
+		FNum = FreeFile()
+		FileOpen(FNum, projectFolder & "\Config\Config.INI", OpenMode.Input)
 
 		Do While Not EOF(FNum)
 
@@ -283,7 +281,7 @@ Module modReadWrite
 		Return True
 		Exit Function
 ErrorHandler:
-
+		Return False
 	End Function
 
 	Public Function LOADPSNFILE4REPRINT(ProductPSN As String) As Boolean
@@ -646,6 +644,6 @@ ErrorHandler:
 		Return True
 		Exit Function
 ErrorHandler:
-
+		Return False
 	End Function
 End Module

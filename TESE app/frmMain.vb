@@ -28,12 +28,15 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Dir(My.Application.Info.DirectoryPath & "\Config.INI") = "" Then
+        Dim fullPath As String = System.AppDomain.CurrentDomain.BaseDirectory
+        Dim projectFolder As String = fullPath.Replace("\TESE app\bin\Debug\", "").Replace("\TESE app\bin\Release\", "")
+
+        If Dir(projectFolder & "\Config\Config.INI") = "" Then
             MsgBox("Config.INI is missing")
             End
         End If
 
-        If Dir(My.Application.Info.DirectoryPath & "\Setup.INI") = "" Then
+        If Dir(projectFolder & "\Setup\Setup.INI") = "" Then
             MsgBox("Setup.INI is missing")
             End
         End If
@@ -87,6 +90,7 @@ Public Class frmMain
         End If
 
         frmMsg.Text1.Text = "Loading CodeSoft..."
+        killLPPA()
         OpenCodesoft()
         frmMsg.Text1.Text = "Loading TLP2844Z..."
         If Not SetPrinter("Zebra TLP2844-Z", "USB001") Then
@@ -114,6 +118,7 @@ Public Class frmMain
         Else
             Button4.Text = "Start"
         End If
+        frmMsg.Close()
         Timer2.Enabled = True
     End Sub
 
@@ -331,8 +336,8 @@ Public Class frmMain
             Dim query2 = "SELECT * FROM TESE.dbo.Label WHERE ModelName = '" & UnitRef & "'"
             Dim dt2 = KoneksiDB.bacaData(query2).Tables(0)
 
-            Parameter.UnitLabelTemplate = dt.Rows(0).Item("Schematic_Template")
-            Parameter.UnitLabelPhoto = dt.Rows(0).Item("Schematic_Img")
+            Parameter.UnitLabelTemplate = dt2.Rows(0).Item("Schematic_Template")
+            Parameter.UnitLabelPhoto = dt2.Rows(0).Item("Schematic_Img")
 
             Return True
         Catch ex As Exception
